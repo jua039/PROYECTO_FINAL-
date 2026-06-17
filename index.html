@@ -10,6 +10,7 @@
 
   <div class="app">
 
+    <!-- HEADER -->
     <header class="topbar">
       <button class="icon-btn" aria-label="Cerrar">✕</button>
       <h1 class="brand">DASHBOARD</h1>
@@ -18,43 +19,44 @@
       </button>
     </header>
 
-   
-    <section class="cards">
-      <button class="card" data-section="reservas">
-        <span class="card-icon">📝</span>
-        <span class="card-label">Reservas</span>
-      </button>
-      <button class="card" data-section="clientes">
-        <span class="card-icon">👥</span>
-        <span class="card-label">Clientes</span>
-      </button>
-      <button class="card" data-section="ingresos">
-        <span class="card-icon">💰</span>
-        <span class="card-label">Ingresos</span>
-      </button>
-    </section>
+    <div class="content">
 
-    <section class="stats">
-      <h2 class="stats-title">ESTADÍSTICAS</h2>
+      <h2 class="section-title">RESUMEN</h2>
+      <section class="cards">
+        <button class="card" data-section="reservas">
+          <span class="card-icon">📝</span>
+          <span class="card-label">Reservas</span>
+        </button>
+        <button class="card" data-section="clientes">
+          <span class="card-icon">👥</span>
+          <span class="card-label">Clientes</span>
+        </button>
+        <button class="card" data-section="ingresos">
+          <span class="card-icon">💰</span>
+          <span class="card-label">Ingresos</span>
+        </button>
+      </section>
 
-      <div class="chart-box">
-        <h3 class="chart-title">Reserva por Mes</h3>
-        <canvas id="chart" height="120"></canvas>
-      </div>
+      <section class="stats">
+        <h2 class="stats-title">ESTADÍSTICAS</h2>
 
-      <div class="months">
-        <button class="month-btn active" data-month="Ene">Ene</button>
-        <button class="month-btn" data-month="Feb">Feb</button>
-        <button class="month-btn" data-month="Mar">Mar</button>
-        <button class="month-btn" data-month="Abr">Abr</button>
-        <button class="month-btn" data-month="May">May</button>
-      </div>
-    </section>
+        <div class="chart-box">
+          <h3 class="chart-title">Reserva por Mes</h3>
+          <div class="chart-bars" id="chart"></div>
+        </div>
 
+        <div class="months">
+          <button class="month-btn active" data-month="Ene">Ene</button>
+          <button class="month-btn" data-month="Feb">Feb</button>
+          <button class="month-btn" data-month="Mar">Mar</button>
+          <button class="month-btn" data-month="Abr">Abr</button>
+          <button class="month-btn" data-month="May">May</button>
+        </div>
+      </section>
+
+    </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
-    

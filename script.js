@@ -9,41 +9,39 @@ const reservasPorMes = {
 
 const dias = ["1", "2", "3", "4", "5", "6", "7"];
 
-const ctx = document.getElementById("chart");
 
-const chart = new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: dias,
-    datasets: [
-      {
-        label: "Reservas",
-        data: reservasPorMes["Ene"],
-        backgroundColor: "#b9b9b9",
-        borderRadius: 4,
-        maxBarThickness: 22,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-      tooltip: { enabled: true },
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: { color: "#e0e0e0" },
-      },
-      y: {
-        beginAtZero: true,
-        grid: { color: "rgba(255,255,255,0.08)" },
-        ticks: { color: "#e0e0e0" },
-      },
-    },
-  },
-});
+const chartContainer = document.getElementById("chart");
+
+function dibujarGrafico(mes) {
+  const valores = reservasPorMes[mes];
+  const maximo = Math.max(...valores);
+
+  
+  chartContainer.innerHTML = "";
+
+  valores.forEach((valor, i) => {
+   
+    const alturaPorcentaje = (valor / maximo) * 100;
+
+    const columna = document.createElement("div");
+    columna.className = "bar-col";
+
+    const barra = document.createElement("div");
+    barra.className = "bar";
+    barra.style.height = alturaPorcentaje + "%";
+
+    const valorTexto = document.createElement("span");
+    valorTexto.className = "bar-value";
+    valorTexto.textContent = dias[i];
+
+    columna.appendChild(barra);
+    columna.appendChild(valorTexto);
+    chartContainer.appendChild(columna);
+  });
+}
+
+
+dibujarGrafico("Ene");
 
 
 const monthButtons = document.querySelectorAll(".month-btn");
@@ -54,9 +52,9 @@ monthButtons.forEach((btn) => {
     monthButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
+    // Redibujar el gráfico con los datos del mes elegido
     const mes = btn.dataset.month;
-    chart.data.datasets[0].data = reservasPorMes[mes];
-    chart.update();
+    dibujarGrafico(mes);
   });
 });
 

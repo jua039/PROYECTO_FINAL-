@@ -1,23 +1,24 @@
-const formulario = document.getElementById('iniciarSesion');
-const email = document.getElementById('agregarEmail').value;
-const contraseña = document.getElementById('agregarContraseña').value;
-const recordar = document.getElementById('guardarInfo').checked;
+/* const formulario = document.getElementById('contactenos');
 
-formulario.addEventListener('submit', function(evento) {
+formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
-    if (email === "admin@correo.com" && password === "123456") {
-        alert("¡Bienvenido!");
-    } else {
-        alert("Usuario o contraseña incorrecta");
-    }
-});
 
-const usuario = {
-        correo: document.getElementById('email').value,
-        contraseña: document.getElementById('contraseña').value,
-        checked: document.getElementById('recordar').checked,
+    const nombre = document.getElementById('nombreCompleto').value;
+    const email = document.getElementById('agregarCorreo').value;
+    const telefono = document.getElementById('numeroTelefono').value;
+    const indicativo = document.getElementById('numIndicativo').value;
+    const mensaje = document.getElementById('escribaMensaje').value;
+
+    const usuario = {
+        nombre,
+        email,
+        indicativo,
+        telefono,
+        mensaje
     };
- 
-localStorage.setItem('formulario', JSON.stringify(usuario));
-console.log("Datos guardados en localStorage", usuario);
-    alert("Usuario guardado correctamente");
+
+    localStorage.setItem("formulario", JSON.stringify(usuario));
+    console.log("Datos guardados:", usuario);
+    alert("Tú comentario fue enviado correctamente");
+    formulario.reset();
+}); */

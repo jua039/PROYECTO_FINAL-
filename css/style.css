@@ -1,0 +1,120 @@
+:root {
+    --beige: #F5F5DC;
+    --verde: #8FBC8F;
+    --verde-oscuro: #1E5B45;
+    --verde-principal: #4CAF83;
+    --azul-oscuro: #1D3557;
+    --verde-claro: #D6EBC5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================
+   NAVBAR GLOBAL (Bootstrap Fixes)
+   ========================================== */
+.custom-navbar {
+    background-color: var(--verde-oscuro) !important;
+    /* Asegura el fondo oscuro */
+    padding: 20px 0;
+}
+
+.custom-navbar .navbar-brand {
+    color: white !important;
+}
+
+.custom-navbar .nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.custom-navbar .nav-link:hover {
+    color: var(--verde-claro) !important;
+}
+
+/* Hamburguesa para móviles */
+.custom-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Ícono de la hamburguesa en blanco */
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+.custom-navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Botones personalizados en Navbar */
+.btn-login {
+    border: 1px solid white !important;
+    color: white !important;
+    background: transparent;
+}
+
+.btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.btn-register {
+    background-color: var(--verde-claro) !important;
+    color: var(--verde-oscuro) !important;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-register:hover {
+    background-color: var(--verde) !important;
+}
+
+/* ==========================================
+   LAYOUT PRINCIPAL Y COMPONENTES
+   ========================================== */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--beige);
+    padding: 20px;
+    min-height: 100vh;
+    /* Asegura que cubra la pantalla si hay poco contenido */
+}
+
+/* 1. Tarjeta "Quiénes somos" */
+.intro-card {
+    border: none !important;
+    background: transparent !important;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* 2. Acordeón */
+.accordion {
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 40px 0;
+}
+
+/* 3. Tarjetas participantes */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.participant-card {
+    border: 2px solid var(--verde) !important;
+    background-color: var(--beige) !important;
+    width: 18rem;
+}

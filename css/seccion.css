@@ -1,0 +1,122 @@
+/* Variables CSS con prioridad absoluta */
+:root {
+    --bg: #1f1f1f !important;
+    --bg-panel: #2b2b2b !important;
+    --bg-card: #4d4d4d !important;
+    --bg-card-hover: #5d5d5d !important;
+    --bg-stats: #5a5a5a !important;
+    --bg-bar: #cfcfcf !important;
+    --text: #f2f2f2 !important;
+    --text-muted: #cfcfcf !important;
+    --accent: #ffd23f !important;
+    --radius: 16px !important;
+}
+
+/* Forzar el contenedor de la sección a ser visible y oscuro */
+.error-section {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: 'Poppins', sans-serif !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: calc(100vh - 80px) !important;
+    /* Ajusta según el alto de tu barra verde */
+    padding: 60px 20px !important;
+    width: 100% !important;
+}
+
+/* Panel Central */
+.error-container {
+    background-color: var(--bg-panel) !important;
+    max-width: 500px !important;
+    width: 100% !important;
+    padding: 40px !important;
+    text-align: center !important;
+    border-radius: var(--radius) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Tarjeta del Error */
+.error-card {
+    background-color: var(--bg-card) !important;
+    padding: 30px !important;
+    border-radius: var(--radius) !important;
+    margin-bottom: 30px !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.error-card:hover {
+    background-color: var(--bg-card-hover) !important;
+    transform: translateY(-5px) !important;
+}
+
+/* Número 404 */
+.error-code {
+    font-size: 6rem !important;
+    font-weight: 700 !important;
+    color: var(--accent) !important;
+    line-height: 1 !important;
+    margin-bottom: 10px !important;
+    letter-spacing: -2px !important;
+}
+
+/* Textos dentro del contenedor */
+.error-container h1 {
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    margin: 0 !important;
+}
+
+.error-container p {
+    color: var(--text-muted) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-top: 20px !important;
+    margin-bottom: 25px !important;
+}
+
+/* Caja de Progreso / Stats */
+.stats-box {
+    background-color: var(--bg-stats) !important;
+    color: var(--text) !important;
+    padding: 15px !important;
+    border-radius: calc(var(--radius) / 2) !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 25px !important;
+}
+
+.progress-container {
+    background-color: var(--bg-panel) !important;
+    border-radius: 50px !important;
+    height: 10px !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    margin-top: 10px !important;
+}
+
+.progress-bar {
+    background-color: var(--accent) !important;
+    height: 100% !important;
+    width: 65% !important;
+    border-radius: 50px !important;
+}
+
+/* Botón de regreso */
+.btn-back {
+    display: inline-block !important;
+    background-color: var(--accent) !important;
+    color: #1f1f1f !important;
+    padding: 12px 30px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+.btn-back:hover {
+    opacity: 0.9 !important;
+    color: #1f1f1f !important;
+    transform: scale(1.02) !important;
+}

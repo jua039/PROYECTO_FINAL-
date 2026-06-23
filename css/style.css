@@ -1,8 +1,59 @@
 :root {
     --beige: #F5F5DC;
     --verde: #8FBC8F;
+    --verde-oscuro:  #1E5B45;
+    --verde-principal: #4CAF83;
+    --azul-oscuro: #1D3557;
+    --verde-claro: #D6EBC5;
+
+}
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Navbar global */
+.custom-navbar{
+    background-color: var(--verde-oscuro);
+    padding: 20px 0;
+}
+
+.navbar-brand,.nav-link{
+    color: white !important;
+}
+
+.nav-link:hover{
+    color: var(--verde-claro) !important;
+}
+.navbar-toggler{
+    border-color: white;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+.nav-link{
+    color: white !important;
+    font-weight: 500;
+}
+
+.nav-link:hover{
+    color: var(--verde-claro) !important;
+}
+.btn-login{
+    border: 1px solid white;
+    color: white;
+}
+
+.btn-register{
+    background-color: var(--verde-claro);
+    color: var(--verde-oscuro);
+    font-weight: 600;
+}
 /* Layout principal */
 .main-layout {
     display: flex;

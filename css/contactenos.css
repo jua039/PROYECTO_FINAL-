@@ -1,28 +1,27 @@
-:root{
+:root {
     --color-fondo: #58B788;
-    --color-card: rgba(255,255,255,0.75);
+    --color-card: rgba(255, 255, 255, 0.75);
     --color-titulos: #214669;
     --color-labels: #367554;
     --color-boton: #58B788;
     --color-bordes: #B8CFA4;
 }
 
-body{
+body {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(rgba(33,70,105,.4),rgba(88,183,136,.3)), url("https://images.pexels.com/photos/27962061/pexels-photo-27962061.jpeg");
+    background-image: linear-gradient(rgba(33, 70, 105, .4), rgba(88, 183, 136, .3)), url("https://images.pexels.com/photos/27962061/pexels-photo-27962061.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.card{
+.card {
     width: 100%;
-    max-width: 550px;
+    max-width: 600px;
     padding: 2rem;
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -32,20 +31,33 @@ body{
     background: rgba(255, 255, 255, 0.20) !important;
 }
 
-.card h2{
+.card h2 {
     text-align: center;
-    color: var(--color-titulos);
+    color: white;
     margin-bottom: 1.5rem;
     font-weight: 700;
+    text-shadow: 0 2px 10px rgba(255,255,255,.4);
 }
 
-.fs-form{
+.contact-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+.contact-subtitle{
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+}
+.fs-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.fs-label{
+.fs-label {
     display: block;
     margin-bottom: .4rem;
     color: var(--color-labels);
@@ -53,28 +65,28 @@ body{
 }
 
 .fs-input,
-.fs-textarea{
+.fs-textarea {
     width: 100%;
     padding: .8rem 1rem;
     border: 2px solid var(--color-bordes);
     border-radius: 10px;
-    background-color: rgba(255,255,255,.85);
+    background-color: rgba(255, 255, 255, .85);
     transition: .3s;
 }
 
 .fs-input:focus,
-.fs-textarea:focus{
+.fs-textarea:focus {
     outline: none;
     border-color: var(--color-boton);
-    box-shadow: 0 0 0 4px rgba(88,183,136,.25);
+    box-shadow: 0 0 0 4px rgba(88, 183, 136, .25);
 }
 
-.fs-textarea{
+.fs-textarea {
     min-height: 120px;
     resize: vertical;
 }
 
-.fs-button{
+.fs-button {
     width: 100%;
     padding: .9rem;
     border: none;
@@ -87,7 +99,7 @@ body{
     transition: .3s;
 }
 
-.fs-button:hover{
+.fs-button:hover {
     background-color: var(--color-labels);
     transform: translateY(-2px);
 }

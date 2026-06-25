@@ -1,0 +1,231 @@
+
+:root {
+  --bg: #1f1f1f;
+  --bg-panel: #2b2b2b;
+  --bg-card: #4d4d4d;
+  --bg-card-hover: #5d5d5d;
+  --bg-stats: #5a5a5a;
+  --bg-bar: #cfcfcf;
+  --text: #f2f2f2;
+  --text-muted: #cfcfcf;
+  --accent: #ffd23f;
+  --radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-btn {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card-icon {
+  font-size: 32px;
+}
+
+.card-label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.chart-box {
+  background: var(--bg-stats);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+}
+
+.chart-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 180px;
+  padding: 0 8px;
+}
+
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 8px;
+}
+
+.bar {
+  width: 100%;
+  max-width: 36px;
+  background: var(--bg-bar);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.3s ease, background 0.3s ease;
+}
+
+.bar-value {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+
+.months {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.month-btn {
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.month-btn:hover {
+  background: var(--bg-card-hover);
+}
+
+.month-btn.active {
+  background: var(--accent);
+  color: #2b2b2b;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    padding: 16px 20px;
+  }
+  .content {
+    padding: 24px 20px;
+  }
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .months {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

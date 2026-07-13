@@ -1,0 +1,135 @@
+/* Diseño Sugerencias */
+
+:root{
+    --color-fondo: #58B788;
+    --color-card: rgba(255,255,255,0.75);
+    --color-titulos: #214669;
+    --color-labels: #367554;
+    --color-boton: #58B788;
+    --color-bordes: #E5E7EB;
+    --color-acento: #F5A623;
+}
+
+body{
+    background: linear-gradient(
+        180deg,
+        #f7fbf8,
+        #eef7f1
+    );
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-logo {
+    width: 220px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    transition: transform .3s ease;
+    filter: drop-shadow(0 4px 10px rgba(33,70,105,.15));
+}
+
+.hero-logo:hover {
+    transform: scale(1.05);
+}
+
+
+.header-contacto {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f3fff5
+    );
+    border-bottom: 4px solid var(--color-acento);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,.05);
+}
+
+.header-contacto h1 {
+    color: var(--color-titulos);
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.header-contacto p {
+    color: var(--color-labels);
+    font-size: 1.1rem;
+}
+
+.info-contacto {
+    background: white;
+    border: 1px solid var(--color-bordes);
+    border-radius: 20px;
+    padding: 30px;
+    border-top: 5px solid var(--color-acento);
+    box-shadow: 0 15px 35px rgba(33,70,105,.12);
+}
+
+.contact-form-container {
+    background: white;
+    border: 1px solid var(--color-bordes);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all .3s ease;
+
+    box-shadow: 0 15px 35px rgba(33,70,105,.12);
+}
+
+.info-contacto h2 {
+    color: var(--color-titulos);
+}
+
+.info-contacto p {
+    color: var(--color-labels);
+}
+
+
+.form-label {
+    color: var(--color-labels);
+}
+
+.form-control {
+    border: 1px solid var(--color-bordes);
+    border-radius: 10px;
+    padding: 12px;
+    transition: all .3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--color-fondo);
+    box-shadow: 0 0 12px rgba(88,183,136,.3);
+}
+
+.btn-custom {
+    width: 100%;
+    background: linear-gradient(
+        180deg,
+        #65c695,
+        #58B788
+    );
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+
+    box-shadow:
+        0 6px 15px rgba(88,183,136,.35),
+        inset 0 1px 0 rgba(255,255,255,.3);
+
+    transition: all .3s ease;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(
+        180deg,
+        #70d3a0,
+        #4aa679
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(88,183,136,.45);
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crear Cuenta</title>
+
+    <link rel="stylesheet" href="Style_Sugerencias.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="card" style="width:100%; max-width:450px; margin:40px auto;">
+
+        <div class="card-body">
+
+            <h2 class="text-center mb-4">
+                Crear Cuenta
+            </h2>
+
+            <form id="registroForm">
+
+                
+                <div class="form-floating mb-3">
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="nombre"
+                        placeholder="Nombre completo">
+
+                    <label for="nombre">
+                        Nombre completo
+                    </label>
+
+                    <small id="errorNombre" class="text-danger"></small>
+
+                </div>
+
+                
+                <div class="form-floating mb-3">
+
+                    <input
+                        type="tel"
+                        class="form-control"
+                        id="telefono"
+                        placeholder="3001234567">
+
+                    <label for="telefono">
+                        Número de teléfono
+                    </label>
+
+                    <small id="errorTelefono" class="text-danger"></small>
+
+                </div>
+
+                
+                <div class="form-floating mb-3">
+
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="name@example.com">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <small id="errorEmail" class="text-danger"></small>
+
+                </div>
+
+                
+
+                <div class="form-floating mb-3">
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Password">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <small id="errorPassword" class="text-danger"></small>
+
+                </div>
+
+          
+                <div class="form-floating mb-4">
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="confirmarPassword"
+                        placeholder="Confirmar Password">
+
+                    <label for="confirmarPassword">
+                        Confirmar contraseña
+                    </label>
+
+                    <small id="errorConfirmar" class="text-danger"></small>
+
+                </div>
+
+         
+                <button type="submit" class="btn btn-primary w-100">
+                    Registrarme
+                </button>
+
+            </form>
+
+            <div class="text-center mt-4">
+
+                ¿Ya tienes una cuenta?
+
+                <br>
+
+                <a href="login.html">
+                    Iniciar sesión
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="registro.js"></script>
+
+</body>
+
+</html>

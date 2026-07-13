@@ -72,7 +72,7 @@ formulario.addEventListener("submit", function(e){
     nombre:nombre,
     telefono: telefono,
     email: email,
-    contraseña: contraseña
+    password: password
 };
 
 

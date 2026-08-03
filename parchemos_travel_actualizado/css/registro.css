@@ -1,0 +1,271 @@
+/* ==========================================================
+   Registro — Explora (tema de viajes)
+========================================================== */
+
+:root {
+    --color-fondo: #58B788;
+    --color-card: rgba(255, 255, 255, 0.75);
+    --color-titulos: #214669;
+    --color-labels: #367554;
+    --color-boton: #58B788;
+    --color-bordes: #E5E7EB;
+    --color-acento: #F5A623;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body.auth-body {
+    margin: 0;
+    background: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.auth-page {
+    display: flex;
+    height: 100vh;
+    /* alto FIJO, evita el bucle de altura indefinida con la imagen */
+}
+
+/* ---------- Panel izquierdo: formulario ---------- */
+
+.auth-form-panel {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* centra el bloque de contenido dentro del panel */
+    padding: 56px 48px;
+    overflow-y: auto;
+    /* evita que el formulario se corte en pantallas bajas */
+}
+
+/* El contenido no crece más allá de un ancho legible,
+   aunque el panel sea más ancho en pantallas grandes.
+   460px (en vez de 400) porque este formulario tiene
+   campos de dos columnas (Nombres / Apellidos, etc). */
+.auth-form-panel>* {
+    width: 100%;
+    max-width: 460px;
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-titulos);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 48px;
+}
+
+.auth-brand i {
+    color: var(--color-acento);
+    font-size: 1.3rem;
+}
+
+.auth-eyebrow {
+    display: inline-block;
+    color: var(--color-acento);
+    font-weight: 600;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.auth-heading {
+    color: var(--color-titulos);
+    font-weight: 700;
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+.auth-subheading {
+    color: var(--color-labels);
+    font-size: .95rem;
+    margin-bottom: 32px;
+}
+
+.auth-form .form-label {
+    color: var(--color-labels);
+    font-weight: 500;
+    font-size: .85rem;
+}
+
+.auth-form .form-control {
+    border: 1px solid var(--color-bordes);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: .95rem;
+    transition: all .3s ease;
+}
+
+.auth-form .form-control:focus {
+    border-color: var(--color-fondo);
+    box-shadow: 0 0 12px rgba(88, 183, 136, .3);
+}
+
+.auth-form .form-check-label {
+    color: var(--color-labels);
+    font-size: .85rem;
+}
+
+.auth-form .form-text-error {
+    color: #d64545;
+    font-size: .8rem;
+    display: none;
+    margin-top: 4px;
+}
+
+.auth-form .is-invalid~.form-text-error,
+.form-text-error.is-visible {
+    display: block;
+}
+
+.btn-custom {
+    width: 100%;
+    background: linear-gradient(180deg, #65c695, #58B788);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow:
+        0 6px 15px rgba(88, 183, 136, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .3);
+    transition: all .3s ease;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(180deg, #70d3a0, #4aa679);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(88, 183, 136, .45);
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--color-labels);
+    font-size: .9rem;
+}
+
+.auth-switch a {
+    color: var(--color-titulos);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    color: var(--color-acento);
+}
+
+.auth-toast {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: .85rem;
+    margin-bottom: 20px;
+}
+
+.auth-toast.is-visible {
+    display: flex;
+}
+
+.auth-toast.success {
+    background: rgba(88, 183, 136, .12);
+    color: #2f6b4f;
+    border: 1px solid rgba(88, 183, 136, .35);
+}
+
+.auth-toast.error {
+    background: rgba(214, 69, 69, .1);
+    color: #a5333b;
+    border: 1px solid rgba(214, 69, 69, .3);
+}
+
+/* ---------- Panel derecho: imagen ---------- */
+
+.auth-image-panel {
+    flex: 1 1 45%;
+    max-width: 45%;
+    position: relative;
+    overflow: hidden;
+    /* evita que la imagen se desborde del panel */
+}
+
+.auth-image-panel .auth-image {
+    position: absolute;
+    /* saca la imagen del flujo normal, evita el bug de altura */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* la imagen llena el panel completo sin deformarse */
+    object-position: center;
+    display: block;
+}
+
+/* Degradado oscuro sobre la imagen, para que la cita se lea bien */
+.auth-image-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(33, 70, 105, .05) 0%, rgba(20, 35, 30, .75) 100%);
+    pointer-events: none;
+}
+
+.auth-image-quote {
+    position: absolute;
+    left: 48px;
+    right: 48px;
+    bottom: 56px;
+    color: #ffffff;
+    z-index: 1;
+    /* queda sobre el degradado y la imagen */
+}
+
+.auth-image-quote .quote-mark {
+    color: var(--color-acento);
+    font-size: 2.4rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.auth-image-quote p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+}
+
+.auth-image-quote span.author {
+    font-size: .8rem;
+    opacity: .85;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .auth-image-panel {
+        display: none;
+    }
+
+    .auth-form-panel {
+        max-width: 100%;
+        padding: 40px 24px;
+    }
+}

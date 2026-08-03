@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="/parchemos_pag/styles/login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body class="auth-body">
+    <div class="auth-page">
+
+        <!-- Panel izquierdo: imagen -->
+        <div class="auth-image-panel">
+            <img src="/parchemos_pag/img/Viajero explorando.avif" alt="Viajero explorando"
+                class="auth-image">
+            
+        </div>
+
+        <div class="auth-form-panel">
+
+            <div class="auth-brand">
+                <i class="bi bi-compass"></i>Explora
+            </div>
+
+            <span class="auth-eyebrow">Bienvenido de nuevo</span>
+            <h1 class="auth-heading">Continúa tu aventura donde la dejaste</h1>
+            <p class="auth-subheading">Inicia sesión para seguir explorando tus próximos destinos.</p>
+
+            <div id="mensajeEstado" class="auth-toast" role="alert"></div>
+
+            <form id="iniciarSesion" class="auth-form row g-3" novalidate>
+                <div class="col-12">
+                    <label for="floatingInput" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <div class="form-text-error">Ingresa un correo válido.</div>
+                </div>
+                <div class="col-12">
+                    <label for="floatingPassword" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <div class="form-text-error">Ingresa tu contraseña.</div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="guardarInfo">
+                        <label class="form-check-label" for="guardarInfo">Guardar información</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-custom">Iniciar sesión</button>
+                </div>
+
+                <div class="col-12 text-center">
+                    <div id="g_id_onload" data-client_id="TU_CLIENT_ID.apps.googleusercontent.com"
+                        data-callback="manejarRespuestaGoogle">
+                    </div>
+                    <div class="g_id_signin d-inline-block mt-2" data-type="standard"></div>
+                </div>
+            </form>
+
+            <p class="auth-switch">
+                ¿No tienes una cuenta?
+                <a href="/parchemos_pag/Registros/registro.html">
+                    <i class="bi bi-person-plus"></i>Crear cuenta
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+    <script src="/parchemos_pag/scripts/login.js"></script>
+</body>
+
+</html>

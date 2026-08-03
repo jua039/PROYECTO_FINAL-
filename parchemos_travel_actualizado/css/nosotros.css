@@ -1,0 +1,76 @@
+/* Variables de marca: ver css/styles.css */
+
+/* Layout principal */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--beige);
+    padding: 20px;
+}
+
+/* 1. Tarjeta "Quiénes somos" (Sin marco, centrada) */
+.intro-card {
+    border: none !important;
+    background: transparent !important;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* 2. Acordeón (Ocupa todo el ancho disponible) */
+.accordion {
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 40px 0;
+}
+
+/* 3. Tarjetas participantes (Una al lado de otra, con verde) */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Tarjetas de los integrantes con tamaño uniforme */
+.participant-card {
+    border: 2px solid var(--verde) !important;
+    background-color: var(--beige) !important;
+    width: 100%;
+    max-width: 18rem;
+    height: 100%;
+    /* Obliga a todas las tarjetas a medir lo mismo */
+    display: flex;
+    flex-direction: column;
+    /* Alinea el contenido internamente */
+    padding-top: 25px;
+    /* Espacio superior para la foto */
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Un toque sutil de sombra */
+}
+
+/* Fotos idénticas: Redondas y del mismo tamaño exacto */
+.participant-card .card-img-top {
+    width: 140px;
+    /* Ancho fijo */
+    height: 140px;
+    /* Alto fijo idéntico al ancho */
+    object-fit: cover;
+    /* Corta el exceso de la imagen sin deformarla */
+    border-radius: 50% !important;
+    /* Fuerza la forma circular perfecta */
+    margin: 0 auto !important;
+    /* Centra la imagen en la tarjeta */
+    border: 3px solid var(--verde-principal);
+}
+
+/* Forzar que los textos internos se distribuyan igual */
+.participant-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Rellena el espacio para alinear los fondos */
+    justify-content: flex-start;
+}

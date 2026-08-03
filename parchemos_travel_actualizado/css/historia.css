@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+/* Variables de marca: ver css/styles.css */
+
+/* Estilos Generales */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f7f9f7;
+    color: #333;
+    line-height: 1.8;
+}
+
+/* Sección de la Historia (Manteniendo la estética limpia) */
+main {
+    padding: 80px 0;
+    min-height: calc(100vh - 80px);
+}
+
+#historia {
+    max-width: 850px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-left: 6px solid var(--verde-principal);
+}
+
+#historia h1 {
+    color: var(--verde-oscuro);
+    font-weight: 800;
+    /* Título imponente como el "Descubre" */
+    font-size: 34px;
+    letter-spacing: -0.5px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+#contenido p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #4A5568;
+    text-align: justify;
+    line-height: 1.9;
+}
+
+/* Detalles de Diseño del texto */
+#contenido p::first-letter {
+    font-size: 45px;
+    font-weight: 700;
+    color: var(--verde-principal);
+    float: left;
+    line-height: 1;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+    #historia {
+        margin: 0 15px;
+        padding: 35px 25px;
+    }
+
+    #historia h1 {
+        font-size: 26px;
+    }
+
+    .custom-navbar .d-flex {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        gap: 10px !important;
+    }
+
+    .btn-login,
+    .btn-register {
+        text-align: center;
+        width: 100%;
+    }
+}

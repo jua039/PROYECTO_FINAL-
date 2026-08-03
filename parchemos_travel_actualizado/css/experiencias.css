@@ -1,0 +1,128 @@
+/* Variables de marca: ver css/styles.css */
+
+.experiencias-hero {
+  background: linear-gradient(120deg, var(--verde-oscuro), var(--verde-principal));
+  color: #fff;
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.experiencias-hero .hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, .18);
+  padding: .5rem 1.1rem;
+  border-radius: 30px;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  margin-bottom: 1rem;
+}
+
+.experiencias-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: .8rem;
+}
+
+.experiencias-hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  opacity: .95;
+}
+
+/* Post destacado */
+.post-destacado {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
+  background: #fff;
+}
+
+.post-destacado img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 320px;
+}
+
+.post-destacado-body {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-destacado-body .badge-categoria {
+  align-self: flex-start;
+}
+
+.post-destacado-body h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--azul-oscuro);
+  margin: 14px 0 10px;
+}
+
+@media (max-width: 768px) {
+  .post-destacado { grid-template-columns: 1fr; }
+}
+
+/* Tarjetas de blog */
+.blog-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+  height: 100%;
+  transition: .3s;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, .12);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-card-body { padding: 22px; }
+
+.badge-categoria {
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  font-size: .75rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.blog-card-fecha {
+  color: var(--gris-texto);
+  font-size: .8rem;
+  margin-left: 8px;
+}
+
+.blog-card h5 {
+  font-weight: 700;
+  color: var(--azul-oscuro);
+  margin: 12px 0 8px;
+}
+
+.blog-card p {
+  color: var(--gris-texto);
+  font-size: .9rem;
+}
+
+.blog-card .leer-mas {
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+.blog-card .leer-mas:hover { color: var(--verde-menta); }

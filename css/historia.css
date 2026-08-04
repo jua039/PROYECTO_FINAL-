@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 /* Variables de marca: ver css/styles.css (no se agregan colores ni fuentes nuevas) */
 
 /* ===== Estilos generales ===== */
 body {
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
+=======
+
+
+
+body {
+    font-family: var(--fuente-principal, "Poppins", Arial, sans-serif);
+>>>>>>> 5ea5dca (parte1)
     background-color: var(--beige);
     color: #333;
     line-height: 1.8;
@@ -14,7 +22,11 @@ main.historia-page {
     min-height: calc(100vh - 80px);
 }
 
+<<<<<<< HEAD
 /* ===== Barra de progreso de lectura (fija arriba) ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .reading-progress {
     position: fixed;
     top: 0;
@@ -33,9 +45,13 @@ main.historia-page {
     transition: width .1s linear;
 }
 
+<<<<<<< HEAD
 /* =========================================================
    Encabezado — misma mancha orgánica que en "Nosotros"
    ========================================================= */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .historia-hero {
     max-width: 700px;
     margin: 0 auto;
@@ -115,9 +131,13 @@ main.historia-page {
     font-size: 1.05rem;
 }
 
+<<<<<<< HEAD
 /* =========================================================
    Línea de tiempo horizontal — filas anchas alternando de lado
    ========================================================= */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .historia-timeline {
     position: relative;
     max-width: 980px;
@@ -243,7 +263,11 @@ main.historia-page {
     margin: 0;
 }
 
+<<<<<<< HEAD
 /* Primera letra grande solo en el primer capítulo, como en el diseño original */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .capitulo:first-child .capitulo-card p::first-letter {
     font-size: 42px;
     font-weight: 700;
@@ -264,7 +288,11 @@ main.historia-page {
     color: #fff;
 }
 
+<<<<<<< HEAD
 /* Cita destacada en medio de la línea de tiempo */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .capitulo-cita {
     position: relative;
     max-width: 620px;
@@ -294,9 +322,13 @@ main.historia-page {
     margin-top: 6px;
 }
 
+<<<<<<< HEAD
 /* =========================================================
    Puente hacia "Nosotros"
    ========================================================= */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .historia-cta {
     max-width: 900px;
     margin: 30px auto 0;
@@ -364,7 +396,11 @@ main.historia-page {
     transform: translateX(4px);
 }
 
+<<<<<<< HEAD
 /* ===== Responsivo ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 @media (max-width: 768px) {
     .historia-hero {
         padding-top: 60px;
@@ -434,4 +470,8 @@ main.historia-page {
         text-align: center;
         width: 100%;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5ea5dca (parte1)

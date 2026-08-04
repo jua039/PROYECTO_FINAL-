@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // CONFIGURACIÓN
+=======
+>>>>>>> 5ea5dca (parte1)
 const STORAGE_KEY = "destinos";
 const ICONOS_SERVICIOS = {
   Hotel: "bi-building",
@@ -9,7 +12,10 @@ const ICONOS_SERVICIOS = {
   Wifi: "bi-wifi",
   Desayuno: "bi-cup-straw",
 };
+<<<<<<< HEAD
 // ELEMENTOS DEL DOM
+=======
+>>>>>>> 5ea5dca (parte1)
 const listaPublicaEl = document.getElementById("listaPublicaDestinos");
 const sinDestinosEl = document.getElementById("sinDestinos");
 const botonesCategoria = document.querySelectorAll("#filtrosCategoria .btn-filtro");
@@ -18,8 +24,11 @@ const formBuscarDestino = document.getElementById("formBuscarDestino");
 const inputBuscarDestino = document.getElementById("buscarDestino");
 const btnLimpiarBusqueda = document.getElementById("limpiarBusqueda");
 const estadoBusquedaEl = document.getElementById("estadoBusqueda");
+<<<<<<< HEAD
 
 // ESTADO DE FILTROS
+=======
+>>>>>>> 5ea5dca (parte1)
 const filtros = {
   categoria: "todos",
   tipoViaje: "todos",
@@ -33,7 +42,10 @@ function normalizarTexto(texto) {
     .toLocaleLowerCase("es-CO")
     .trim();
 }
+<<<<<<< HEAD
 // UTILIDADES
+=======
+>>>>>>> 5ea5dca (parte1)
 function formatearPrecio(precio) {
   return new Intl.NumberFormat("es-CO", {
     style: "currency",
@@ -67,10 +79,18 @@ function agregarAlCarrito(destino) {
       duracion: destino.duracion,
       categoria: destino.categoria,
       cantidad: 1,
+<<<<<<< HEAD
+=======
+      fechaReserva: new Date().toISOString(),
+>>>>>>> 5ea5dca (parte1)
     });
   }
   guardarCarrito(carrito);
   window.actualizarContadorCarrito?.();
+<<<<<<< HEAD
+=======
+  window.mostrarConfirmacionReserva?.();
+>>>>>>> 5ea5dca (parte1)
 }
 function crearServiciosHTML(servicios) {
   return servicios
@@ -86,12 +106,18 @@ function crearServiciosHTML(servicios) {
     )
     .join("");
 }
+<<<<<<< HEAD
 // TARJETA DEL CATÁLOGO
 function crearCardPublica(destino) {
   const col = document.createElement("div");
   col.className = "col-lg-4 col-md-6";
 
   // Valores por defecto
+=======
+function crearCardPublica(destino) {
+  const col = document.createElement("div");
+  col.className = "col-lg-4 col-md-6";
+>>>>>>> 5ea5dca (parte1)
   const rating = destino.rating ?? 4.8;
   const resenas = destino.resenas ?? 120;
 
@@ -201,13 +227,19 @@ function crearCardPublica(destino) {
 
     </div>
   `;
+<<<<<<< HEAD
   // Botón Reservar
+=======
+>>>>>>> 5ea5dca (parte1)
   const btnReservar = col.querySelector(".reservar-btn");
 
   btnReservar.addEventListener("click", () => {
     agregarAlCarrito(destino);
   });
+<<<<<<< HEAD
   // Favoritos
+=======
+>>>>>>> 5ea5dca (parte1)
   const btnFavorito = col.querySelector(".favorito");
   const icono = btnFavorito.querySelector("i");
 
@@ -222,7 +254,10 @@ function crearCardPublica(destino) {
 
   return col;
 }
+<<<<<<< HEAD
 // FILTRADO
+=======
+>>>>>>> 5ea5dca (parte1)
 function aplicarFiltros(destinos) {
   return destinos.filter((destino) => {
     const coincideCategoria =
@@ -242,8 +277,11 @@ function aplicarFiltros(destinos) {
     return coincideCategoria && coincideTipo && coincideBusqueda;
   });
 }
+<<<<<<< HEAD
 
 // RENDER DEL CATÁLOGO
+=======
+>>>>>>> 5ea5dca (parte1)
 function renderizarCatalogo() {
   const destinos = aplicarFiltros(obtenerDestinos());
 
@@ -269,8 +307,11 @@ function renderizarCatalogo() {
     listaPublicaEl.appendChild(crearCardPublica(destino));
   });
 }
+<<<<<<< HEAD
 
 // LISTENERS DE FILTROS
+=======
+>>>>>>> 5ea5dca (parte1)
 botonesCategoria.forEach((btn) => {
   btn.addEventListener("click", () => {
     botonesCategoria.forEach((b) => b.classList.remove("active"));
@@ -284,8 +325,11 @@ botonesGrupo.forEach((btn) => {
   btn.addEventListener("click", () => {
     botonesGrupo.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
+<<<<<<< HEAD
     // El grupo se muestra de forma independiente para no ocultar resultados
     // por una categoría que hubiera quedado seleccionada anteriormente.
+=======
+>>>>>>> 5ea5dca (parte1)
     botonesCategoria.forEach((b) => b.classList.remove("active"));
     botonesCategoria[0]?.classList.add("active");
     filtros.categoria = "todos";
@@ -315,6 +359,7 @@ btnLimpiarBusqueda.addEventListener("click", () => {
   inputBuscarDestino.focus();
   renderizarCatalogo();
 });
+<<<<<<< HEAD
 
 // INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
@@ -322,6 +367,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Mantiene el catálogo actualizado si el Dashboard está abierto en otra pestaña.
+=======
+document.addEventListener("DOMContentLoaded", () => {
+  renderizarCatalogo();
+});
+>>>>>>> 5ea5dca (parte1)
 window.addEventListener("storage", (event) => {
   if (event.key === STORAGE_KEY) renderizarCatalogo();
 });

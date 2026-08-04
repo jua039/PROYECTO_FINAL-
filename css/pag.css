@@ -9,7 +9,11 @@
 
 .custom-navbar {
     background-color: var(--verde-oscuro) !important;
+<<<<<<< HEAD
     /* Asegura el fondo oscuro */
+=======
+    
+>>>>>>> 5ea5dca (parte1)
     padding: 20px 0;
 }
 
@@ -26,12 +30,20 @@
     color: var(--verde-claro) !important;
 }
 
+<<<<<<< HEAD
 /* Hamburguesa para móviles */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .custom-navbar .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
+<<<<<<< HEAD
 /* Ícono de la hamburguesa en blanco */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .custom-navbar .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
@@ -40,7 +52,11 @@
     box-shadow: none;
 }
 
+<<<<<<< HEAD
 /* Botones personalizados en Navbar */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .btn-login {
     border: 1px solid white !important;
     color: white !important;

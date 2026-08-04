@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarCarrito();
 });
 
+<<<<<<< HEAD
+=======
+window.addEventListener("reservas-actualizadas", renderizarCarrito);
+
+>>>>>>> 5ea5dca (parte1)
 function crearItemCarrito(item) {
   const tarjeta = document.createElement("div");
   tarjeta.className = "carrito-item";
@@ -251,4 +256,8 @@ function confirmarVaciarCarrito() {
 }
 
 btnVaciarCarrito.addEventListener("click", vaciarCarrito);
+<<<<<<< HEAD
 btnConfirmarVaciar.addEventListener( "click", confirmarVaciarCarrito);
+=======
+btnConfirmarVaciar.addEventListener( "click", confirmarVaciarCarrito);
+>>>>>>> 5ea5dca (parte1)

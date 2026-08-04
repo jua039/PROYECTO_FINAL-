@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 /* ===== Variables globales de marca (fuente única de verdad) ===== */
 :root {
+=======
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --fuente-principal: "Poppins", Arial, sans-serif;
+>>>>>>> 5ea5dca (parte1)
     --beige: #F5F5DC;
     --verde: #8FBC8F;
     --verde-oscuro: #1E5B45;
@@ -17,17 +25,163 @@
 }
 
 body {
+<<<<<<< HEAD
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
     color: #333;
 }
 
+=======
+    font-family: var(--fuente-principal);
+    color: #333;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+.carrito-flotante-boton {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1050;
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--verde-oscuro);
+    color: #fff;
+    font-size: 1.35rem;
+    box-shadow: 0 8px 22px rgba(30, 91, 69, .35);
+    transition: transform .2s ease, background-color .2s ease;
+}
+
+.carrito-flotante-boton:hover {
+    background: var(--verde-principal);
+    transform: translateY(-3px);
+}
+
+.carrito-flotante-contador {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 22px;
+    height: 22px;
+    padding: 1px 6px;
+    border-radius: 20px;
+    background: #dc3545;
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.carrito-flotante-panel {
+    position: fixed;
+    right: 24px;
+    bottom: 94px;
+    z-index: 1051;
+    width: min(360px, calc(100vw - 32px));
+    padding: 20px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, .2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s;
+}
+
+.carrito-flotante-panel.abierto {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.carrito-flotante-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.carrito-flotante-encabezado h2 {
+    margin: 0;
+    color: var(--verde-oscuro);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.carrito-flotante-encabezado button, .eliminar-reserva-flotante {
+    border: 0;
+    background: transparent;
+    color: #6c757d;
+}
+
+#listaCarritoFlotante {
+    max-height: 285px;
+    padding: 0;
+    margin: 0 0 16px;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.reserva-flotante-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.reserva-flotante-item strong, .reserva-flotante-item span {
+    display: block;
+}
+
+.reserva-flotante-item strong { font-size: .92rem; }
+.reserva-flotante-item span, .carrito-flotante-vacio { color: var(--gris-texto); font-size: .8rem; }
+.eliminar-reserva-flotante:hover { color: #dc3545; }
+
+.toast-reserva {
+    position: fixed;
+    right: 24px;
+    bottom: 94px;
+    z-index: 1060;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 42px 16px 18px;
+    border-radius: 12px;
+    background: #28a745;
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(40, 167, 69, .35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    transition: opacity .28s ease, transform .28s ease, visibility .28s;
+}
+
+.toast-reserva.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.toast-reserva-cerrar { position: absolute; top: 4px; right: 9px; border: 0; background: transparent; color: #fff; font-size: 1.45rem; line-height: 1; }
+.toast-reserva-ver { border: 1px solid rgba(255, 255, 255, .7); border-radius: 7px; background: #fff; color: #1e5b45; padding: 5px 8px; font-size: .8rem; font-weight: 600; }
+
+@media (max-width: 576px) {
+    .carrito-flotante-boton { right: 16px; bottom: 16px; }
+    .carrito-flotante-panel { right: 16px; bottom: 84px; }
+    .toast-reserva { right: 16px; bottom: 84px; left: 16px; }
+}
+
+>>>>>>> 5ea5dca (parte1)
 a {
     text-decoration: none;
 }
 
 .custom-navbar {
     background-color: var(--verde-oscuro) !important;
+<<<<<<< HEAD
     /* Asegura el fondo oscuro */
+=======
+    
+>>>>>>> 5ea5dca (parte1)
     padding: 20px 0;
 }
 
@@ -44,12 +198,20 @@ a {
     color: var(--verde-claro) !important;
 }
 
+<<<<<<< HEAD
 /* Hamburguesa para móviles */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .custom-navbar .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
+<<<<<<< HEAD
 /* Ícono de la hamburguesa en blanco */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .custom-navbar .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
@@ -58,7 +220,11 @@ a {
     box-shadow: none;
 }
 
+<<<<<<< HEAD
 /* Botones personalizados en Navbar */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .btn-login {
     border: 1px solid white !important;
     color: white !important;
@@ -167,7 +333,11 @@ a {
 
 }
 
+<<<<<<< HEAD
 /* Botón de engranaje — acceso rápido al panel de administrador */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .btn-admin-gear {
     display: inline-flex;
     align-items: center;
@@ -198,7 +368,11 @@ a {
     transform: rotate(90deg);
 }
 
+<<<<<<< HEAD
 /* ===== Footer global ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .site-footer {
     background-color: var(--verde-oscuro);
     color: rgba(255, 255, 255, .85);
@@ -270,7 +444,11 @@ a {
     margin: 30px 0 15px;
 }
 
+<<<<<<< HEAD
 /* ===== Botón de filtro genérico (usado en Destinos y Experiencias) ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .btn-filtro {
     border: 1px solid #dfe4e8;
     background: #fff;
@@ -293,7 +471,11 @@ a {
     color: #fff;
 }
 
+<<<<<<< HEAD
 /* ===== Responsive navbar ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 @media (max-width: 991px) {
     .custom-navbar .navbar-nav {
         margin: 15px 0;
@@ -304,7 +486,11 @@ a {
     }
 }
 
+<<<<<<< HEAD
 /* ===== Carrusel de destinos (Home) ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .destinos-carrusel-section {
     padding: 70px 0;
     background: #fff;
@@ -369,7 +555,11 @@ a {
     width: 5%;
 }
 
+<<<<<<< HEAD
 /* ===== Galería / Ideas de viaje (Home) ===== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .ideas-viaje-section {
     padding: 70px 0;
     background: var(--beige);
@@ -414,7 +604,11 @@ a {
     margin-bottom: 0;
 }
 
+<<<<<<< HEAD
 /* Carrusel de tarjetas y vista previa del blog en Inicio */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 #carruselDestinos { padding: 18px 38px 30px; }
 #carruselDestinos .carousel-indicators { bottom: -8px; }
 #carruselDestinos .carousel-indicators button { background-color: var(--verde-oscuro); }

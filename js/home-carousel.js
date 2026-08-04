@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Carrusel de tarjetas de destinos para Inicio. */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 (function () {
   const CATALOGO_URL = "html/catalogo.html";
   const DESTINOS_POR_SLIDE = 3;

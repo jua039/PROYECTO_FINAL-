@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /* ==========================================================
    Registro — Explora (tema de viajes)
 ========================================================== */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 
 :root {
     --color-fondo: #58B788;
@@ -24,16 +28,27 @@ body {
 body.auth-body {
     margin: 0;
     background: #ffffff;
+<<<<<<< HEAD
     font-family: 'Poppins', sans-serif;
+=======
+    font-family: var(--fuente-principal, "Poppins", Arial, sans-serif);
+>>>>>>> 5ea5dca (parte1)
 }
 
 .auth-page {
     display: flex;
     height: 100vh;
+<<<<<<< HEAD
     /* alto FIJO, evita el bucle de altura indefinida con la imagen */
 }
 
 /* ---------- Panel izquierdo: formulario ---------- */
+=======
+    
+}
+
+
+>>>>>>> 5ea5dca (parte1)
 
 .auth-form-panel {
     flex: 1 1 55%;
@@ -41,6 +56,7 @@ body.auth-body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     /* centra el bloque de contenido dentro del panel */
     padding: 56px 48px;
     overflow-y: auto;
@@ -51,6 +67,15 @@ body.auth-body {
    aunque el panel sea más ancho en pantallas grandes.
    460px (en vez de 400) porque este formulario tiene
    campos de dos columnas (Nombres / Apellidos, etc). */
+=======
+    
+    padding: 56px 48px;
+    overflow-y: auto;
+    
+}
+
+
+>>>>>>> 5ea5dca (parte1)
 .auth-form-panel>* {
     width: 100%;
     max-width: 460px;
@@ -194,29 +219,49 @@ body.auth-body {
     border: 1px solid rgba(214, 69, 69, .3);
 }
 
+<<<<<<< HEAD
 /* ---------- Panel derecho: imagen ---------- */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 
 .auth-image-panel {
     flex: 1 1 45%;
     max-width: 45%;
     position: relative;
     overflow: hidden;
+<<<<<<< HEAD
     /* evita que la imagen se desborde del panel */
+=======
+    
+>>>>>>> 5ea5dca (parte1)
 }
 
 .auth-image-panel .auth-image {
     position: absolute;
+<<<<<<< HEAD
     /* saca la imagen del flujo normal, evita el bug de altura */
+=======
+    
+>>>>>>> 5ea5dca (parte1)
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+<<<<<<< HEAD
     /* la imagen llena el panel completo sin deformarse */
+=======
+    
+>>>>>>> 5ea5dca (parte1)
     object-position: center;
     display: block;
 }
 
+<<<<<<< HEAD
 /* Degradado oscuro sobre la imagen, para que la cita se lea bien */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 .auth-image-panel::before {
     content: "";
     position: absolute;
@@ -232,7 +277,11 @@ body.auth-body {
     bottom: 56px;
     color: #ffffff;
     z-index: 1;
+<<<<<<< HEAD
     /* queda sobre el degradado y la imagen */
+=======
+    
+>>>>>>> 5ea5dca (parte1)
 }
 
 .auth-image-quote .quote-mark {
@@ -257,7 +306,11 @@ body.auth-body {
     opacity: .85;
 }
 
+<<<<<<< HEAD
 /* ---------- Responsive ---------- */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 
 @media (max-width: 900px) {
     .auth-image-panel {
@@ -268,4 +321,8 @@ body.auth-body {
         max-width: 100%;
         padding: 40px 24px;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5ea5dca (parte1)

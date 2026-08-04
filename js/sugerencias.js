@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /* ============================================================
    sugerencias.js — Formulario de Sugerencias
    ============================================================ */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const mensajeEl = document.getElementById("mensajeSugerencia");

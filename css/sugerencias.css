@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Variables de marca globales: ver css/styles.css */
+=======
+
+>>>>>>> 5ea5dca (parte1)
 :root {
         --color-fondo: #58B788;
         --color-card: rgba(255, 255, 255, 0.75);
@@ -13,7 +17,11 @@ body {
     background: linear-gradient(180deg,
             #f7fbf8,
             #eef7f1);
+<<<<<<< HEAD
     font-family: 'Poppins', sans-serif;
+=======
+    font-family: var(--fuente-principal, "Poppins", Arial, sans-serif);
+>>>>>>> 5ea5dca (parte1)
 }
 
 .hero-logo {
@@ -123,4 +131,8 @@ body {
 
     box-shadow:
         0 12px 25px rgba(88, 183, 136, .45);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5ea5dca (parte1)

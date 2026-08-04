@@ -1,68 +1,425 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-/* Variables de marca: ver css/styles.css */
+/* Variables de marca: ver css/styles.css (no se agregan colores ni fuentes nuevas) */
 
-/* Estilos Generales */
+/* ===== Estilos generales ===== */
 body {
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #f7f9f7;
+    background-color: var(--beige);
     color: #333;
     line-height: 1.8;
 }
 
-/* Sección de la Historia (Manteniendo la estética limpia) */
-main {
-    padding: 80px 0;
+main.historia-page {
+    padding: 0 0 80px;
     min-height: calc(100vh - 80px);
 }
 
-#historia {
-    max-width: 850px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 50px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-left: 6px solid var(--verde-principal);
+/* ===== Barra de progreso de lectura (fija arriba) ===== */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, .06);
+    z-index: 1050;
 }
 
-#historia h1 {
+.reading-progress span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--verde-principal);
+    transition: width .1s linear;
+}
+
+/* =========================================================
+   Encabezado — misma mancha orgánica que en "Nosotros"
+   ========================================================= */
+.historia-hero {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 90px 24px 30px;
+}
+
+.historia-hero-visual {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.historia-blob {
+    width: 110px;
+    height: 110px;
+    border-radius: 62% 38% 55% 45% / 45% 55% 42% 58%;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    box-shadow: 0 16px 32px rgba(30, 91, 69, .18);
+    position: relative;
+    z-index: 2;
+}
+
+.historia-ring {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 2px dashed var(--verde);
+    border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%;
+    animation: girar-historia 40s linear infinite;
+}
+
+@keyframes girar-historia {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.historia-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    font-weight: 600;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+}
+
+.historia-hero h1 {
     color: var(--verde-oscuro);
     font-weight: 800;
-    /* Título imponente como el "Descubre" */
-    font-size: 34px;
-    letter-spacing: -0.5px;
-    margin-bottom: 30px;
+    font-size: 2.6rem;
+    letter-spacing: -.5px;
+    margin-bottom: 12px;
+}
+
+.historia-lead {
+    color: var(--gris-texto);
+    font-size: 1.05rem;
+}
+
+/* =========================================================
+   Línea de tiempo horizontal — filas anchas alternando de lado
+   ========================================================= */
+.historia-timeline {
+    position: relative;
+    max-width: 980px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+    counter-reset: paso;
+}
+
+.historia-timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--verde) 0 10px, transparent 10px 20px);
+    opacity: .55;
+    transform: translateX(-50%);
+}
+
+.capitulo {
+    counter-increment: paso;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 84px 1fr;
+    align-items: center;
+    column-gap: 30px;
+    margin-bottom: 46px;
+    opacity: 0;
+    transform: translateX(-36px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.capitulo:nth-child(even) {
+    transform: translateX(36px);
+}
+
+.capitulo.en-vista {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.capitulo-nodo {
+    position: relative;
+    grid-column: 2;
+    justify-self: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--verde-principal);
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .1);
+    z-index: 2;
+}
+
+.capitulo-nodo::after {
+    content: counter(paso);
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--verde-oscuro);
+    color: #fff;
+    font-size: .65rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .18);
+}
+
+.capitulo-card {
+    grid-column: 1;
+    justify-self: end;
+    text-align: right;
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 26px 28px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .06);
+    border-right: 4px solid var(--verde-principal);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.capitulo:nth-child(even) .capitulo-card {
+    grid-column: 3;
+    justify-self: start;
+    text-align: left;
+    border-right: none;
+    border-left: 4px solid var(--verde-principal);
+}
+
+.capitulo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, .1);
+}
+
+.capitulo-tag {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--verde-oscuro);
+    background: var(--verde-claro);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
 }
 
-#contenido p {
-    font-size: 16px;
-    font-weight: 400;
+.capitulo-card p {
+    font-size: .96rem;
     color: #4A5568;
-    text-align: justify;
-    line-height: 1.9;
+    text-align: inherit;
+    line-height: 1.85;
+    margin: 0;
 }
 
-/* Detalles de Diseño del texto */
-#contenido p::first-letter {
-    font-size: 45px;
+/* Primera letra grande solo en el primer capítulo, como en el diseño original */
+.capitulo:first-child .capitulo-card p::first-letter {
+    font-size: 42px;
     font-weight: 700;
     color: var(--verde-principal);
     float: left;
     line-height: 1;
-    margin-right: 10px;
+    margin-right: 8px;
     margin-top: 4px;
 }
 
-/* Ajustes Responsivos */
+.capitulo-cierre .capitulo-card {
+    border-color: var(--verde-oscuro);
+}
+
+.capitulo-cierre .capitulo-nodo {
+    border-color: var(--verde-oscuro);
+    background: var(--verde-oscuro);
+    color: #fff;
+}
+
+/* Cita destacada en medio de la línea de tiempo */
+.capitulo-cita {
+    position: relative;
+    max-width: 620px;
+    margin: 10px auto 50px;
+    text-align: center;
+    padding: 10px 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.capitulo-cita.en-vista {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.capitulo-cita i {
+    font-size: 1.8rem;
+    color: var(--verde-claro);
+}
+
+.capitulo-cita p {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+/* =========================================================
+   Puente hacia "Nosotros"
+   ========================================================= */
+.historia-cta {
+    max-width: 900px;
+    margin: 30px auto 0;
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.historia-cta.en-vista {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.historia-cta-blob {
+    flex: 0 0 70px;
+    width: 70px;
+    height: 70px;
+    border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.historia-cta h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--verde-oscuro);
+    margin-bottom: 4px;
+}
+
+.historia-cta p {
+    font-size: .92rem;
+    color: var(--gris-texto);
+    margin: 0;
+}
+
+.btn-conoce-equipo {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--verde-oscuro);
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: .25s ease;
+}
+
+.btn-conoce-equipo:hover {
+    background-color: var(--verde-principal);
+    color: #fff;
+    transform: translateX(4px);
+}
+
+/* ===== Responsivo ===== */
 @media (max-width: 768px) {
-    #historia {
-        margin: 0 15px;
-        padding: 35px 25px;
+    .historia-hero {
+        padding-top: 60px;
     }
 
-    #historia h1 {
-        font-size: 26px;
+    .historia-hero h1 {
+        font-size: 2rem;
+    }
+
+    .historia-timeline::before {
+        left: 30px;
+    }
+
+    .capitulo,
+    .capitulo:nth-child(even) {
+        grid-template-columns: 60px 1fr;
+        column-gap: 18px;
+        transform: translateY(24px);
+    }
+
+    .capitulo.en-vista,
+    .capitulo:nth-child(even).en-vista {
+        transform: translateY(0);
+    }
+
+    .capitulo-nodo,
+    .capitulo:nth-child(even) .capitulo-nodo {
+        grid-column: 1;
+        width: 52px;
+        height: 52px;
+        font-size: 1.1rem;
+    }
+
+    .capitulo-card,
+    .capitulo:nth-child(even) .capitulo-card {
+        grid-column: 2;
+        justify-self: start;
+        text-align: left;
+        max-width: none;
+        border-left: 4px solid var(--verde-principal);
+        border-right: none;
+    }
+
+    .capitulo-cita {
+        padding: 10px 10px;
+    }
+
+    .capitulo-cita p {
+        font-size: 1.1rem;
+    }
+
+    .historia-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 24px;
     }
 
     .custom-navbar .d-flex {

@@ -13,47 +13,149 @@
 
 <body data-page="nosotros">
 
-    <div id="navbar-root"></div>
-    <main>
-        <div id="historia">
-            <h1>NUESTRA HISTORIA</h1>
-            <div id="contenido">
-                <p>
-                    Parchemos Travel no nació en una oficina fría, sino de la frustración real de un grupo de apasionados
-                    por la tecnología, el desarrollo y las infinitas riquezas de nuestra tierra. Como viajeros, nos dimos 
-                    cuenta de que planear una escapada —algo que debería ser emocionante y lleno de expectativa— se había
-                    convertido en una tarea agotadora y estresante. Las plataformas tradicionales nos inundaban con un mar 
-                    de opciones infinitas, algoritmos impersonales, anuncios intrusivos y reseñas dudosas que solo generaban 
-                    desconfianza, indecisión y vacío. El sistema actual seguía tratando al viajero como un consumidor masivo, 
-                    un número más en una métrica, ignorando que cada persona es un individuo con gustos, presupuestos y 
-                    expectativas completamente únicas.  Cansados de ver cómo se perdía la magia de descubrir nuevos rumbos, 
-                    decidimos que era hora de cambiar las reglas del juego de manera radical. Nos propusimos el reto de diseñar 
-                    y maquetar un ecosistema digital diferente utilizando tecnologías modernas, pero con un alma profundamente humana. 
-                    Queríamos construir un espacio con auténtico sello colombiano, libre de publicidad invasiva y con un modelo de 
-                    intermediación transparente y seguro. Nuestro objetivo era simple pero ambicioso: que buscar tu próximo destino no 
-                    se sintiera como interactuar con un robot o un buscador frío, sino exactamente como sentarte a tomar un café con un 
-                    parce que se conoce el territorio de memoria, que sabe dónde están los mejores rincones y que te aconseja con total 
-                    honestidad.  Así fue como unimos la innovación tecnológica con la calidez humana que nos caracteriza. Desarrollamos una 
-                    plataforma inteligente pensada para optimizar los planes según cada tipo de aventura, sugiriendo las opciones más rentables 
-                    si decides viajar en solitario, compartir rutas en familia o armar el parche ideal con tus amigos.  Pero nuestro viaje no 
-                    se detiene en la pantalla. Nacimos con la firme convicción de que el turismo debe ser consciente, descentralizado y con 
-                    un fuerte impacto social. Por eso, cada línea de código que escribimos y cada alianza que formamos está diseñada para 
-                    apoyar con orgullo a las comunidades y a los emprendedores locales que mantienen vivas las tradiciones de nuestro país. 
-                    
-                    
-                    Porque para nosotros, viajar va mucho más allá de acumular kilómetros o tomar una foto; se trata de conectar de 
-                    forma genuina con experiencias auténticas y darte el poder de explorar la inmensa riqueza de Colombia a tu propio ritmo, 
-                    con la confianza de que vas de la mano de un verdadero amigo.  
-                </p>
+    <!-- Barra de progreso de lectura -->
+    <div class="reading-progress"><span id="readingBar"></span></div>
 
+    <div id="navbar-root"></div>
+
+    <main class="historia-page">
+
+        <!-- Encabezado, mismo lenguaje visual que la mancha organica de "Nosotros" -->
+        <header class="historia-hero">
+            <div class="historia-hero-visual">
+                <div class="historia-blob"><i class="bi bi-signpost-split"></i></div>
+                <span class="historia-ring"></span>
             </div>
+            <span class="historia-eyebrow"><i class="bi bi-clock-history"></i> El camino hasta aqui</span>
+            <h1>Nuestra historia</h1>
+            <p class="historia-lead">Ocho momentos que explican por que Parchemos Travel existe.</p>
+        </header>
+
+        <!-- Linea de tiempo interactiva -->
+        <div id="historia" class="historia-timeline">
+
+            <article class="capitulo" data-icon="bi-emoji-frown">
+                <div class="capitulo-nodo"><i class="bi bi-emoji-frown"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">El origen</span>
+                    <p>Parchemos Travel no nació en una oficina fría, sino de la frustración real de un grupo de apasionados
+                        por la tecnología, el desarrollo y las infinitas riquezas de nuestra tierra. Como viajeros, nos dimos
+                        cuenta de que planear una escapada —algo que debería ser emocionante y lleno de expectativa— se había
+                        convertido en una tarea agotadora y estresante.</p>
+                </div>
+            </article>
+
+            <article class="capitulo" data-icon="bi-x-octagon">
+                <div class="capitulo-nodo"><i class="bi bi-x-octagon"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">El problema</span>
+                    <p>Las plataformas tradicionales nos inundaban con un mar de opciones infinitas, algoritmos impersonales,
+                        anuncios intrusivos y reseñas dudosas que solo generaban desconfianza, indecisión y vacío. El sistema
+                        actual seguía tratando al viajero como un consumidor masivo, un número más en una métrica, ignorando
+                        que cada persona es un individuo con gustos, presupuestos y expectativas completamente únicas.</p>
+                </div>
+            </article>
+
+            <article class="capitulo" data-icon="bi-lightbulb">
+                <div class="capitulo-nodo"><i class="bi bi-lightbulb"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">La decisión</span>
+                    <p>Cansados de ver cómo se perdía la magia de descubrir nuevos rumbos, decidimos que era hora de cambiar
+                        las reglas del juego de manera radical. Nos propusimos el reto de diseñar y maquetar un ecosistema
+                        digital diferente utilizando tecnologías modernas, pero con un alma profundamente humana.</p>
+                </div>
+            </article>
+
+            <!-- Cita destacada -->
+            <div class="capitulo-cita">
+                <i class="bi bi-quote"></i>
+                <p>Queríamos construir un espacio con auténtico sello colombiano, libre de publicidad invasiva y con un
+                    modelo de intermediación transparente y seguro.</p>
+            </div>
+
+            <article class="capitulo" data-icon="bi-cup-hot">
+                <div class="capitulo-nodo"><i class="bi bi-cup-hot"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">El objetivo</span>
+                    <p>Nuestro objetivo era simple pero ambicioso: que buscar tu próximo destino no se sintiera como
+                        interactuar con un robot o un buscador frío, sino exactamente como sentarte a tomar un café con un
+                        parce que se conoce el territorio de memoria, que sabe dónde están los mejores rincones y que te
+                        aconseja con total honestidad.</p>
+                </div>
+            </article>
+
+            <article class="capitulo" data-icon="bi-code-slash">
+                <div class="capitulo-nodo"><i class="bi bi-code-slash"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">La solución</span>
+                    <p>Así fue como unimos la innovación tecnológica con la calidez humana que nos caracteriza. Desarrollamos
+                        una plataforma inteligente pensada para optimizar los planes según cada tipo de aventura, sugiriendo
+                        las opciones más rentables si decides viajar en solitario, compartir rutas en familia o armar el
+                        parche ideal con tus amigos.</p>
+                </div>
+            </article>
+
+            <article class="capitulo" data-icon="bi-people">
+                <div class="capitulo-nodo"><i class="bi bi-people"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">El compromiso</span>
+                    <p>Pero nuestro viaje no se detiene en la pantalla. Nacimos con la firme convicción de que el turismo
+                        debe ser consciente, descentralizado y con un fuerte impacto social. Por eso, cada línea de código que
+                        escribimos y cada alianza que formamos está diseñada para apoyar con orgullo a las comunidades y a los
+                        emprendedores locales que mantienen vivas las tradiciones de nuestro país.</p>
+                </div>
+            </article>
+
+            <article class="capitulo capitulo-cierre" data-icon="bi-compass">
+                <div class="capitulo-nodo"><i class="bi bi-compass"></i></div>
+                <div class="capitulo-card">
+                    <span class="capitulo-tag">Hoy</span>
+                    <p>Porque para nosotros, viajar va mucho más allá de acumular kilómetros o tomar una foto; se trata de
+                        conectar de forma genuina con experiencias auténticas y darte el poder de explorar la inmensa riqueza
+                        de Colombia a tu propio ritmo, con la confianza de que vas de la mano de un verdadero amigo.</p>
+                </div>
+            </article>
+
         </div>
+
+        <!-- Puente hacia Nosotros -->
+        <section class="historia-cta">
+            <div class="historia-cta-blob"><i class="bi bi-people-fill"></i></div>
+            <div>
+                <h2>Detrás de esta historia hay un parche</h2>
+                <p>Conoce a las personas que la escribieron y que siguen construyendo Parchemos Travel todos los días.</p>
+            </div>
+            <a href="nosotros.html" class="btn-conoce-equipo">Conoce al equipo <i class="bi bi-arrow-right"></i></a>
+        </section>
+
     </main>
 
     <div id="footer-root"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/layout.js" data-base=".."></script>
+
+    <script>
+        // Revela cada capítulo al hacer scroll
+        const capitulos = document.querySelectorAll('.capitulo, .capitulo-cita, .historia-cta');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('en-vista');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        capitulos.forEach(el => observer.observe(el));
+
+        // Barra de progreso de lectura
+        const barra = document.getElementById('readingBar');
+        window.addEventListener('scroll', () => {
+            const alto = document.documentElement.scrollHeight - window.innerHeight;
+            const avance = alto > 0 ? (window.scrollY / alto) * 100 : 0;
+            barra.style.width = avance + '%';
+        });
+    </script>
 </body>
 
 </html>

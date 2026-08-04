@@ -9,7 +9,7 @@ const POSTS_BLOG = [
     fecha: "12 jul 2026",
     imagen: "../assets/images/hero.png",
     resumen: "Desde el Valle de Cocora hasta los miradores de Salento, te contamos las caminatas que todo parcero debe hacer al menos una vez.",
-    contenido: "El Eje Cafetero ofrece paisajes de ensueño para quienes disfrutan caminar. Entre palmas de cera, fincas cafeteras y niebla de montaña, cada sendero cuenta una historia distinta de nuestra geografía. Recomendamos madrugar, llevar buen calzado y contratar guías locales que conocen cada rincón.",
+    contenido: "El Eje Cafetero ofrece paisajes de ensueño para quienes disfrutan caminar. Entre palmas de cera, fincas cafeteras y niebla de montaña, cada sendero cuenta una historia distinta de nuestra geografía.\n\nPara comenzar, el Valle de Cocora ofrece recorridos de diferente dificultad entre palmas de cera y miradores. En Salento puedes complementar la caminata con una visita a una finca cafetera y conversar con productores locales sobre el proceso del grano.\n\nRecomendamos madrugar, llevar impermeable, protector solar, agua y calzado con buen agarre. Contratar guías locales hace el recorrido más seguro y ayuda a descubrir senderos, aves y relatos que no aparecen en un mapa.",
     destacado: true,
   },
   {
@@ -19,7 +19,7 @@ const POSTS_BLOG = [
     fecha: "05 jul 2026",
     imagen: "../assets/images/hero.png",
     resumen: "Ceviches, arepas de huevo y cocadas: un recorrido por los sabores que definen la costa colombiana.",
-    contenido: "La cocina cartagenera mezcla influencias afro, indígenas y españolas. Recorrer sus calles es también un viaje de sabores: desde el pescado frito frente al mar hasta los postres de coco vendidos en las murallas.",
+    contenido: "La cocina cartagenera mezcla influencias afro, indígenas y españolas. Recorrer sus calles es también un viaje de sabores: desde el pescado frito frente al mar hasta los postres de coco vendidos en las murallas.\n\nBusca los mercados locales para probar arepas de huevo, enyucados y jugos de frutas del Caribe. Al final de la tarde, una cocada o un raspao es la excusa perfecta para recorrer las plazas del centro histórico.\n\nSi tienes restricciones alimentarias, pregunta por la preparación antes de ordenar: muchos restaurantes ya ofrecen alternativas, pero los sabores tradicionales se disfrutan mejor con una recomendación de quien cocina.",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const POSTS_BLOG = [
     fecha: "20 jun 2026",
     imagen: "../assets/images/hero.png",
     resumen: "Consejos prácticos para viajar liviano sin dejar nada esencial en casa.",
-    contenido: "Piensa en capas de ropa, protector solar, un buen calzado cómodo y documentos digitalizados. Colombia tiene climas muy variados, así que revisa el destino antes de empacar.",
+    contenido: "Piensa en capas de ropa, protector solar, un buen calzado cómodo y documentos digitalizados. Colombia tiene climas muy variados, así que revisa el destino antes de empacar.\n\nHaz una lista corta por categorías: documentos y dinero, ropa adaptable, cuidado personal y un pequeño botiquín. Lleva una muda adicional en el equipaje de mano si vas a tomar vuelos o trayectos largos.\n\nDeja espacio libre en la maleta para compras locales y evita cargar artículos que puedes conseguir al llegar. Viajar ligero te permite moverte con más facilidad y aprovechar más cada plan.",
   },
   {
     id: 5,

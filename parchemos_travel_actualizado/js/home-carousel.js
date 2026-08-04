@@ -1,46 +1,63 @@
-/* ============================================================
-   home-carousel.js — Carrusel de destinos en el Home
-   Lee los destinos guardados en localStorage (sembrados por seed.js)
-   y genera los slides del carrusel Bootstrap dinámicamente.
-   ============================================================ */
+/* Carrusel de tarjetas de destinos para Inicio. */
 (function () {
   const CATALOGO_URL = "html/catalogo.html";
-  const MAX_SLIDES = 5;
+  const DESTINOS_POR_SLIDE = 3;
 
   function obtenerDestinos() {
-    const data = localStorage.getItem("destinos");
-    return data ? JSON.parse(data) : [];
+    try {
+      return JSON.parse(localStorage.getItem("destinos") || "[]");
+    } catch {
+      return [];
+    }
   }
 
-  function crearSlide(destino, index) {
+  function formatearPrecio(precio) {
+    return new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(precio);
+  }
+
+  function crearTarjeta(destino) {
+    const imagen = destino.imagen || "assets/images/hero.png";
     return `
-      <div class="carousel-item ${index === 0 ? "active" : ""}">
-        <div class="carrusel-destino-slide">
-          <img src="assets/images/hero.png" alt="${destino.nombre}">
-          <div class="carrusel-destino-overlay">
-            <span class="categoria-tag">${destino.categoria}</span>
-            <h3>${destino.nombre}</h3>
-            <p class="mb-0">${destino.region}</p>
-            <a href="${CATALOGO_URL}" class="btn btn-ver-destino">
-              Ver este destino <i class="bi bi-arrow-right"></i>
-            </a>
+      <article class="home-destino-card">
+        <img src="${imagen}" alt="${destino.nombre}" onerror="this.src='assets/images/hero.png'">
+        <div class="home-destino-card-body">
+          <span class="categoria-tag">${destino.categoria}</span>
+          <h3>${destino.nombre}</h3>
+          <p><i class="bi bi-geo-alt"></i> ${destino.region}</p>
+          <div class="home-destino-card-footer">
+            <strong>Desde ${formatearPrecio(destino.precio)}</strong>
+            <a href="${CATALOGO_URL}" aria-label="Ver ${destino.nombre}"><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
-      </div>`;
+      </article>`;
+  }
+
+  function dividirEnGrupos(lista, tamano) {
+    return Array.from({ length: Math.ceil(lista.length / tamano) }, (_, indice) =>
+      lista.slice(indice * tamano, indice * tamano + tamano)
+    );
   }
 
   function renderizarCarrusel() {
     const contenedor = document.getElementById("carruselDestinosInner");
-    if (!contenedor) return;
+    const indicadores = document.getElementById("carruselDestinosIndicadores");
+    if (!contenedor || !indicadores) return;
 
-    const destinos = obtenerDestinos().slice(0, MAX_SLIDES);
-
-    if (destinos.length === 0) {
-      contenedor.innerHTML = `<div class="carousel-item active"><p class="text-center py-5">Muy pronto nuevos destinos.</p></div>`;
+    const grupos = dividirEnGrupos(obtenerDestinos(), DESTINOS_POR_SLIDE);
+    if (!grupos.length) {
+      contenedor.innerHTML = '<div class="carousel-item active"><p class="text-center py-5">Muy pronto nuevos destinos.</p></div>';
+      indicadores.innerHTML = "";
       return;
     }
 
-    contenedor.innerHTML = destinos.map(crearSlide).join("");
+    contenedor.innerHTML = grupos.map((grupo, indice) => `
+      <div class="carousel-item ${indice === 0 ? "active" : ""}">
+        <div class="home-destinos-grid">${grupo.map(crearTarjeta).join("")}</div>
+      </div>`).join("");
+    indicadores.innerHTML = grupos.map((_, indice) => `
+      <button type="button" data-bs-target="#carruselDestinos" data-bs-slide-to="${indice}"
+        class="${indice === 0 ? "active" : ""}" ${indice === 0 ? 'aria-current="true"' : ""}
+        aria-label="Diapositiva ${indice + 1}"></button>`).join("");
   }
 
   document.addEventListener("DOMContentLoaded", renderizarCarrusel);

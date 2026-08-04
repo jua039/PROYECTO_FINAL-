@@ -126,3 +126,13 @@
 }
 
 .blog-card .leer-mas:hover { color: var(--verde-menta); }
+
+/* Lectura amplia de artículos en el modal, sin alterar la tarjeta resumida. */
+#modalPostContenido {
+  white-space: pre-line;
+  color: var(--gris-texto);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+#modalPost .modal-body { padding: 1.5rem 2rem 2rem; }

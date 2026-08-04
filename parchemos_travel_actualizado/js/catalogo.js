@@ -256,6 +256,11 @@ botonesGrupo.forEach((btn) => {
   btn.addEventListener("click", () => {
     botonesGrupo.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
+    // El grupo se muestra de forma independiente para no ocultar resultados
+    // por una categoría que hubiera quedado seleccionada anteriormente.
+    botonesCategoria.forEach((b) => b.classList.remove("active"));
+    botonesCategoria[0]?.classList.add("active");
+    filtros.categoria = "todos";
     filtros.tipoViaje = btn.dataset.tipo;
     renderizarCatalogo();
   });

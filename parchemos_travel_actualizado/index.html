@@ -38,20 +38,27 @@
     <!-- Carrusel dinámico de destinos -->
     <section class="destinos-carrusel-section">
         <div class="container">
-            <h2 class="text-center section-title">Destinos que te esperan</h2>
+            <h2 class="text-center section-title">Destinos para tu próximo parche</h2>
             <div id="carruselDestinos" class="carousel slide" data-bs-ride="carousel">
+                <div id="carruselDestinosIndicadores" class="carousel-indicators"></div>
                 <div id="carruselDestinosInner" class="carousel-inner">
                     <!-- Slides generados por js/home-carousel.js -->
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carruselDestinos" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
+                    <span class="carousel-control-prev-icon"><i class="bi bi-chevron-left"></i></span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carruselDestinos" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
+                    <span class="carousel-control-next-icon"><i class="bi bi-chevron-right"></i></span>
                 </button>
             </div>
-            <div class="text-center mt-4">
-                <a href="html/catalogo.html" class="hero-btn">Ver todos los destinos</a>
+            <div class="home-blog-preview mt-5">
+                <div class="home-blog-icon"><i class="bi bi-journal-richtext"></i></div>
+                <div>
+                    <span>ÚLTIMAS HISTORIAS</span>
+                    <h3>Tips, rutas y noticias para tu próximo parche</h3>
+                    <p>Descubre recomendaciones de viajeros y planes para conocer Colombia con más calma y propósito.</p>
+                </div>
+                <a href="html/pag.html" class="btn btn-ver-blog">Ir al blog <i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
     </section>

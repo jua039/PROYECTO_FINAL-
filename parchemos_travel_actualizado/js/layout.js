@@ -10,6 +10,9 @@
   const html = base === "." ? "html" : ".";
   const page = document.body.dataset.page || "";
   const esAdmin = localStorage.getItem("rolAdmin") === "true";
+  const instagramLink = "https://www.instagram.com/parchemos_travel?igsh=MW9meWdhdW40aDR3dg==";
+  const tiktokLink = "https://www.tiktok.com/@parchemos_travel?is_from_webapp=1&sender_device=pc";
+  const whatsappLink = "";
 
   const NAV_LINKS = [
     { href: `${base}/index.html`, label: "Inicio", key: "inicio" },
@@ -83,9 +86,9 @@
           <div class="col-lg-3 col-md-6">
             <h6>Síguenos</h6>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+              <a href="${instagramLink}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="${tiktokLink}" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+              <a href="${whatsappLink || '#'}" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
             </div>
           </div>
         </div>

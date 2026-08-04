@@ -15,118 +15,127 @@
 
     <div id="navbar-root"></div>
 
-    <main class="main-layout">
-        
+    <main class="main-layout nosotros-page">
 
-        <div class="card intro-card">
-    <!-- Se añade la clase logo-nosotros y mx-auto -->
-    <img src="../assets/images/logo.jpeg" class="card-img-top logo-nosotros mx-auto" alt="logo del poryecto">
-    <div class="card-body">
-        <h5 class="card-title">Quienes somos</h5>
-        <p class="card-text">Parchemos Travel es la plataforma digital que transforma tu forma de explorar Colombia. Nos olvidamos de los algoritmos fríos para ofrecerte planeación personalizada, información confiable y una atención tan humana y cercana como la de un parcero que conoce el territorio. Conéctate con experiencias auténticas y apoya al turismo local sin enredos ni sorpresas.</p>
-        <a href="historia.html" class="btn btn-primary">Un poco de nuestra historia</a>
-    </div>
-</div>
+        <!-- 1. Intro: logo en mancha orgánica + texto a la derecha -->
+        <section class="intro-hero-nosotros">
+            <div class="intro-hero-visual">
+                <div class="intro-blob">
+                    <img src="../assets/images/logo.jpeg" class="intro-logo-img" alt="logo del proyecto">
+                </div>
+                <span class="intro-ring"></span>
+            </div>
+            <div class="intro-hero-text">
+                <span class="intro-eyebrow"><i class="bi bi-compass"></i> Sobre la plataforma</span>
+                <h1>Quiénes somos</h1>
+                <p>Parchemos Travel es la plataforma digital que transforma tu forma de explorar Colombia. Nos olvidamos de los algoritmos fríos para ofrecerte planeación personalizada, información confiable y una atención tan humana y cercana como la de un parcero que conoce el territorio. Conéctate con experiencias auténticas y apoya al turismo local sin enredos ni sorpresas.</p>
+                <a href="historia.html" class="btn-historia">Un poco de nuestra historia <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </section>
 
-        <div class="accordion w-100" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                        Atención humana y cercana, como un parcero
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <strong>Atención humana y cercana, como un parcero</strong> En Parchemos Travel creemos que planear un viaje no debería sentirse como llenar un formulario. Por eso, cada interacción en nuestra plataforma está diseñada para que el viajero sienta que está hablando con alguien que conoce el territorio de verdad: un parcero, no un algoritmo. Nuestro equipo acompaña cada consulta con calidez y cercanía, entendiendo que detrás de cada reserva hay una historia, un sueño o un reencuentro esperando suceder.
+        <!-- 2. Pilares: timeline vertical en vez de acordeón plano -->
+        <section class="pilares-section">
+            <h2 class="pilares-title">Lo que nos mueve</h2>
+
+            <div class="accordion pilares-accordion" id="accordionExample">
+                <div class="accordion-item pilar-item">
+                    <span class="pilar-num">01</span>
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            <i class="bi bi-people-fill pilar-icon"></i>
+                            Atención humana y cercana, como un parcero
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            En Parchemos Travel creemos que planear un viaje no debería sentirse como llenar un formulario. Por eso, cada interacción en nuestra plataforma está diseñada para que el viajero sienta que está hablando con alguien que conoce el territorio de verdad: un parcero, no un algoritmo. Nuestro equipo acompaña cada consulta con calidez y cercanía, entendiendo que detrás de cada reserva hay una historia, un sueño o un reencuentro esperando suceder.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item pilar-item">
+                    <span class="pilar-num">02</span>
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            <i class="bi bi-shield-check pilar-icon"></i>
+                            Planificación transparente, confiable y sin sorpresas
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Sabemos lo frustrante que es encontrar un precio en pantalla y descubrir cargos ocultos al momento de pagar. En Parchemos Travel eso no existe. Nuestra plataforma opera sin publicidad y con una única comisión clara del 10% sobre cada reserva, para que el viajero siempre sepa exactamente qué está pagando y por qué. Información real, precios reales y sin sorpresas: así se construye la confianza que merece cada aventura.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item pilar-item">
+                    <span class="pilar-num">03</span>
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            <i class="bi bi-globe-americas pilar-icon"></i>
+                            Turismo consciente que apoya a comunidades locales
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Viajar bien no es solo llegar a un destino bonito: es hacerlo de una manera que cuide el territorio y a las personas que lo habitan. Parchemos Travel conecta a los viajeros con emprendedores y comunidades locales de Colombia, priorizando experiencias auténticas que distribuyen el turismo de forma consciente y descentralizada. Cada reserva en nuestra plataforma es también un aporte a quienes sostienen viva la riqueza cultural y natural del país.
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                        Planificación transparente, confiable y sin sorpresas
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <strong>Planificación transparente, confiable y sin sorpresas</strong> Sabemos lo frustrante que es encontrar un precio en pantalla y descubrir cargos ocultos al momento de pagar. En Parchemos Travel eso no existe. Nuestra plataforma opera sin publicidad y con una única comisión clara del 10% sobre cada reserva, para que el viajero siempre sepa exactamente qué está pagando y por qué. Información real, precios reales y sin sorpresas: así se construye la confianza que merece cada aventura.
+        </section>
+
+        <!-- 3. Equipo: muro de tarjetas escalonadas, no la grilla original -->
+        <section class="team-section">
+            <h2 class="team-title">El equipo detrás de Parchemos</h2>
+            <p class="team-subtitle">Las personas que le dieron forma a esta idea.</p>
+
+            <div class="team-wall">
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="../assets/images/alejandra.jpeg" alt="Brigith Alejandra Corredor Fula">
                     </div>
+                    <h3 class="team-name">Brigith Alejandra Corredor Fula</h3>
+                    <span class="team-role">Desarrolladora Full Stack</span>
+                    <p class="team-desc">Experta en análisis de datos, gestión de procesos y trabajo en equipo.</p>
                 </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                        Turismo consciente que apoya a comunidades locales
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <strong>Turismo consciente que apoya a comunidades locales</strong> Viajar bien no es solo llegar a un destino bonito: es hacerlo de una manera que cuide el territorio y a las personas que lo habitan. Parchemos Travel conecta a los viajeros con emprendedores y comunidades locales de Colombia, priorizando experiencias auténticas que distribuyen el turismo de forma consciente y descentralizada. Cada reserva en nuestra plataforma es también un aporte a quienes sostienen viva la riqueza cultural y natural del país.
+
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="../assets/images/carol.jpeg" alt="Carol Yined Sepulveda Florez">
                     </div>
+                    <h3 class="team-name">Carol Yined Sepulveda Florez</h3>
+                    <span class="team-role">Desarrolladora Web</span>
+                    <p class="team-desc">Enfocada en construir aplicaciones web visualmente atractivas.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="../assets/images/fabian.jpeg" alt="Fabian Rodriguez">
+                    </div>
+                    <h3 class="team-name">Fabian Rodriguez</h3>
+                    <span class="team-role">Full Stack Java | Product Owner</span>
+                    <p class="team-desc">Desarrollador Full Stack con enfoque estratégico en gestión de productos.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="../assets/images/elimer.jpeg" alt="Elimer Rodriguez O.">
+                    </div>
+                    <h3 class="team-name">Elimer Rodriguez O.</h3>
+                    <span class="team-role">Desarrollador Web y Móvil</span>
+                    <p class="team-desc">Experto en Laravel, Flutter, HTML, CSS y JavaScript.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="../assets/images/juan.jpeg" alt="Juan Daniel Vivas Baron">
+                    </div>
+                    <h3 class="team-name">Juan Daniel Vivas Baron</h3>
+                    <span class="team-role">Full Stack Java | Scrum Master</span>
+                    <p class="team-desc">Desarrollador Full Stack y Scrum Master enfocado en la agilidad.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-<div class="container mt-5">
-    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-        
-        <div class="col d-flex justify-content-center">
-            <div class="card participant-card">
-                <img src="../assets/images/alejandra.jpeg" class="card-img-top" alt="Brigith Alejandra Corredor Fula">
-                <div class="card-body text-center">
-                    <h3 class="card-title fw-bold fs-5">Brigith Alejandra Corredor Fula</h3>
-                    <h6 class="text-muted small">Desarrolladora Full Stack</h6>
-                    <p class="card-text small text-secondary">Experta en análisis de datos, gestión de procesos y trabajo en equipo.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col d-flex justify-content-center">
-            <div class="card participant-card">
-                <img src="../assets/images/carol.jpeg" class="card-img-top" alt="Carol Yined Sepulveda Florez">
-                <div class="card-body text-center">
-                    <h3 class="card-title fw-bold fs-5">Carol Yined Sepulveda Florez</h3>
-                    <h6 class="text-muted small">Desarrolladora Web</h6>
-                    <p class="card-text small text-secondary">Enfocada en construir aplicaciones web visualmente atractivas.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col d-flex justify-content-center">
-            <div class="card participant-card">
-                <img src="../assets/images/fabian.jpeg" class="card-img-top" alt="Fabian Rodriguez">
-                <div class="card-body text-center">
-                    <h3 class="card-title fw-bold fs-5">Fabian Rodriguez</h3>
-                    <h6 class="text-muted small">Full Stack Java | Product Owner</h6>
-                    <p class="card-text small text-secondary">Desarrollador Full Stack con enfoque estratégico en gestión de productos.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col d-flex justify-content-center">
-            <div class="card participant-card">
-                <img src="../assets/images/elimer.jpeg" class="card-img-top" alt="Elimer Rodriguez O.">
-                <div class="card-body text-center">
-                    <h3 class="card-title fw-bold fs-5">Elimer Rodriguez O.</h3>
-                    <h6 class="text-muted small">Desarrollador Web y Móvil</h6>
-                    <p class="card-text small text-secondary">Experto en Laravel, Flutter, HTML, CSS y JavaScript.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col d-flex justify-content-center">
-            <div class="card participant-card">
-                <img src="../assets/images/juan.jpeg" class="card-img-top" alt="Juan Daniel Vivas Baron">
-                <div class="card-body text-center">
-                    <h3 class="card-title fw-bold fs-5">Juan Daniel Vivas Baron</h3>
-                    <h6 class="text-muted small">Full Stack Java | Scrum Master</h6>
-                    <p class="card-text small text-secondary">Desarrollador Full Stack y Scrum Master enfocado en la agilidad.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
     </main>
 
     <div id="footer-root"></div>

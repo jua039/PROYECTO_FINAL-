@@ -12,14 +12,18 @@
     --gris-texto: #666666;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
     color: #333;
 }
 
-a { text-decoration: none; }
+a {
+    text-decoration: none;
+}
 
 .custom-navbar {
     background-color: var(--verde-oscuro) !important;
@@ -140,26 +144,58 @@ a { text-decoration: none; }
     background-color: #3d9770;
     transform: translateY(-2px);
 }
-.btn-carrito{
 
-    background:#ffffff;
-    color:var(--verde-oscuro);
-    border-radius:10px;
-    font-weight:600;
-    position:relative;
+.btn-carrito {
 
-}
-
-.btn-carrito:hover{
-
-    background:#f4f4f4;
+    background: #ffffff;
+    color: var(--verde-oscuro);
+    border-radius: 10px;
+    font-weight: 600;
+    position: relative;
 
 }
 
-#contadorCarrito{
+.btn-carrito:hover {
 
-    font-size:.70rem;
+    background: #f4f4f4;
 
+}
+
+#contadorCarrito {
+
+    font-size: .70rem;
+
+}
+
+/* Botón de engranaje — acceso rápido al panel de administrador */
+.btn-admin-gear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .5);
+    background: transparent;
+    color: #fff;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+    transition: background-color .25s ease, border-color .25s ease, transform .4s ease;
+}
+
+.btn-admin-gear i {
+    display: inline-block;
+    transition: transform .5s ease;
+}
+
+.btn-admin-gear:hover {
+    background-color: var(--verde-principal);
+    border-color: var(--verde-principal);
+    color: #fff;
+}
+
+.btn-admin-gear:hover i {
+    transform: rotate(90deg);
 }
 
 /* ===== Footer global ===== */
@@ -185,20 +221,33 @@ a { text-decoration: none; }
     letter-spacing: .05em;
 }
 
-.site-footer p { font-size: .9rem; }
+.site-footer p {
+    font-size: .9rem;
+}
 
-.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-.footer-links li { margin-bottom: .5rem; }
+.footer-links li {
+    margin-bottom: .5rem;
+}
 
 .footer-links a {
     color: rgba(255, 255, 255, .75);
     font-size: .9rem;
 }
 
-.footer-links a:hover { color: var(--verde-claro); }
+.footer-links a:hover {
+    color: var(--verde-claro);
+}
 
-.footer-social { display: flex; gap: 12px; }
+.footer-social {
+    display: flex;
+    gap: 12px;
+}
 
 .footer-social a {
     width: 38px;
@@ -212,38 +261,54 @@ a { text-decoration: none; }
     transition: .25s;
 }
 
-.footer-social a:hover { background: var(--verde-principal); }
+.footer-social a:hover {
+    background: var(--verde-principal);
+}
 
-.site-footer hr { border-color: rgba(255, 255, 255, .15); margin: 30px 0 15px; }
+.site-footer hr {
+    border-color: rgba(255, 255, 255, .15);
+    margin: 30px 0 15px;
+}
 
 /* ===== Botón de filtro genérico (usado en Destinos y Experiencias) ===== */
 .btn-filtro {
-  border: 1px solid #dfe4e8;
-  background: #fff;
-  color: #444;
-  border-radius: 30px;
-  padding: 8px 18px;
-  font-size: .88rem;
-  font-weight: 500;
-  transition: .2s;
+    border: 1px solid #dfe4e8;
+    background: #fff;
+    color: #444;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: .88rem;
+    font-weight: 500;
+    transition: .2s;
 }
 
-.btn-filtro:hover { border-color: var(--verde-menta); color: var(--verde-oscuro); }
+.btn-filtro:hover {
+    border-color: var(--verde-menta);
+    color: var(--verde-oscuro);
+}
 
 .btn-filtro.active {
-  background: var(--verde-oscuro);
-  border-color: var(--verde-oscuro);
-  color: #fff;
+    background: var(--verde-oscuro);
+    border-color: var(--verde-oscuro);
+    color: #fff;
 }
 
 /* ===== Responsive navbar ===== */
 @media (max-width: 991px) {
-    .custom-navbar .navbar-nav { margin: 15px 0; }
-    .custom-navbar .d-flex { flex-wrap: wrap; }
+    .custom-navbar .navbar-nav {
+        margin: 15px 0;
+    }
+
+    .custom-navbar .d-flex {
+        flex-wrap: wrap;
+    }
 }
 
 /* ===== Carrusel de destinos (Home) ===== */
-.destinos-carrusel-section { padding: 70px 0; background: #fff; }
+.destinos-carrusel-section {
+    padding: 70px 0;
+    background: #fff;
+}
 
 .carrusel-destino-slide {
     position: relative;
@@ -261,7 +326,7 @@ a { text-decoration: none; }
 .carrusel-destino-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 60%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, .1) 60%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -279,7 +344,11 @@ a { text-decoration: none; }
     margin-bottom: 10px;
 }
 
-.carrusel-destino-overlay h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+.carrusel-destino-overlay h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
 
 .carrusel-destino-overlay .btn-ver-destino {
     margin-top: 15px;
@@ -291,24 +360,34 @@ a { text-decoration: none; }
     border-radius: 10px;
 }
 
-.carrusel-destino-overlay .btn-ver-destino:hover { background: var(--verde-claro); }
+.carrusel-destino-overlay .btn-ver-destino:hover {
+    background: var(--verde-claro);
+}
 
 #carruselDestinos .carousel-control-prev,
-#carruselDestinos .carousel-control-next { width: 5%; }
+#carruselDestinos .carousel-control-next {
+    width: 5%;
+}
 
 /* ===== Galería / Ideas de viaje (Home) ===== */
-.ideas-viaje-section { padding: 70px 0; background: var(--beige); }
+.ideas-viaje-section {
+    padding: 70px 0;
+    background: var(--beige);
+}
 
 .idea-card {
     background: #fff;
     border-radius: 16px;
     padding: 28px;
     height: 100%;
-    box-shadow: 0 8px 20px rgba(0,0,0,.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
     transition: .3s;
 }
 
-.idea-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(0,0,0,.1); }
+.idea-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+}
 
 .idea-card .idea-icon {
     width: 56px;
@@ -323,6 +402,14 @@ a { text-decoration: none; }
     margin-bottom: 18px;
 }
 
-.idea-card h5 { font-weight: 700; color: var(--azul-oscuro); margin-bottom: 10px; }
+.idea-card h5 {
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    margin-bottom: 10px;
+}
 
-.idea-card p { color: var(--gris-texto); font-size: .92rem; margin-bottom: 0; }
+.idea-card p {
+    color: var(--gris-texto);
+    font-size: .92rem;
+    margin-bottom: 0;
+}

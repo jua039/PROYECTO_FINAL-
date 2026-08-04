@@ -397,19 +397,6 @@ body {
 .btn-reservar i{
     margin-right:8px;
 }
-.oferta-badge{
-    position:absolute;
-    bottom:15px;
-    left:15px;
-    background:#ff6b35;
-    color:#fff;
-    padding:6px 14px;
-    border-radius:20px;
-    font-size:.8rem;
-    font-weight:600;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-
 @media (max-width: 991px) {
   .sticky-lg-top {
     position: static !important;

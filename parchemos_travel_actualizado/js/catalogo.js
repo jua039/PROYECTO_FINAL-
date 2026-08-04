@@ -122,10 +122,6 @@ function crearCardPublica(destino) {
           <i class="bi bi-heart"></i>
         </button>
 
-        <span class="oferta-badge">
-          🔥 Más reservado
-        </span>
-
       </div>
 
       <div class="card-body">
@@ -323,4 +319,9 @@ btnLimpiarBusqueda.addEventListener("click", () => {
 // INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
   renderizarCatalogo();
+});
+
+// Mantiene el catálogo actualizado si el Dashboard está abierto en otra pestaña.
+window.addEventListener("storage", (event) => {
+  if (event.key === STORAGE_KEY) renderizarCatalogo();
 });

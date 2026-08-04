@@ -77,6 +77,7 @@ function agregarDestino(e) {
     duracion: document.getElementById("duracion").value.trim(),
     categoria: document.getElementById("categoria").value,
     cupos: Number(document.getElementById("cupos").value),
+    tipoViaje: document.getElementById("tipoViaje").value,
     imagen: imagenSrc,
   };
 
@@ -117,6 +118,7 @@ function editarDestino(id) {
   document.getElementById("duracion").value = destino.duracion;
   document.getElementById("categoria").value = destino.categoria;
   document.getElementById("cupos").value = destino.cupos;
+  document.getElementById("tipoViaje").value = destino.tipoViaje || "";
 
   imagenPreview.src = destino.imagen;
   imagenPreview.classList.remove("d-none");
@@ -177,6 +179,7 @@ function crearCardDestino(destino) {
         <h5 class="card-title text-navy mb-1">${destino.nombre}</h5>
         <p class="text-muted small mb-2"><i class="bi bi-geo-alt"></i> ${destino.region}</p>
         <span class="badge categoria-badge mb-2 align-self-start">${destino.categoria}</span>
+        <p class="small text-muted mb-2"><i class="bi bi-people"></i> ${destino.tipoViaje || "Tipo de viaje por definir"}</p>
         <p class="small text-secondary text-truncate-3">${destino.descripcion}</p>
         <div class="mt-auto pt-2">
           <p class="precio-tag mb-1">${formatearPrecio(destino.precio)}</p>
@@ -240,3 +243,8 @@ inputImagen.addEventListener("change", () => {
 
 
 document.addEventListener("DOMContentLoaded", renderizarDestinos);
+
+// Refresca el listado si el catálogo o una segunda pestaña modifica los datos.
+window.addEventListener("storage", (event) => {
+  if (event.key === STORAGE_KEY) renderizarDestinos();
+});

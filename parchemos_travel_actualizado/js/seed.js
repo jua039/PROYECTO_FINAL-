@@ -241,17 +241,45 @@ const DESTINOS_SEED = [
   },
 ];
 
+const SEED_IMAGENES_KEY = "destinosSeedImagenes";
+
+function leerDestinosGuardados() {
+  try {
+    const destinos = JSON.parse(localStorage.getItem("destinos") || "[]");
+    return Array.isArray(destinos) ? destinos : [];
+  } catch {
+    return [];
+  }
+}
+
 function inicializarSeed() {
   const datosExistentes = localStorage.getItem("destinos");
-  const destinos = datosExistentes ? JSON.parse(datosExistentes) : [];
-  const necesitaMigracion =
-    destinos.length !== DESTINOS_SEED.length ||
-    destinos.some((d) => !d.tipoViaje || !d.imagen || !d.imagen.startsWith("http"));
-
-  if (!datosExistentes || necesitaMigracion) {
+  const destinos = leerDestinosGuardados();
+  const firmaImagenes = JSON.stringify(
+    DESTINOS_SEED.map(({ id, imagen }) => ({ id, imagen })),
+  );
+  const debeSincronizarImagenes = localStorage.getItem(SEED_IMAGENES_KEY) !== firmaImagenes;
+  if (!datosExistentes) {
     localStorage.setItem("destinos", JSON.stringify(DESTINOS_SEED));
     console.log(`✅ Seed cargado con ${DESTINOS_SEED.length} destinos de Colombia.`);
+  } else {
+    let destinosActualizados = [...destinos];
+
+    if (debeSincronizarImagenes) {
+      const imagenesPorId = new Map(DESTINOS_SEED.map(({ id, imagen }) => [id, imagen]));
+      destinosActualizados = destinosActualizados.map((destino) =>
+        imagenesPorId.has(destino.id)
+          ? { ...destino, imagen: imagenesPorId.get(destino.id) }
+          : destino,
+      );
+    }
+
+    if (debeSincronizarImagenes) {
+      localStorage.setItem("destinos", JSON.stringify(destinosActualizados));
+    }
   }
+
+  localStorage.setItem(SEED_IMAGENES_KEY, firmaImagenes);
 }
 
 inicializarSeed();

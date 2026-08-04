@@ -1,138 +1,68 @@
 /* Variables de marca: ver css/styles.css */
+body { background: #fbfcfa; }
 
 .experiencias-hero {
-  background: linear-gradient(120deg, var(--verde-oscuro), var(--verde-principal));
-  color: #fff;
-  padding: 80px 0 60px;
-  text-align: center;
-}
-
-.experiencias-hero .hero-badge {
-  display: inline-block;
-  background: rgba(255, 255, 255, .18);
-  padding: .5rem 1.1rem;
-  border-radius: 30px;
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .05em;
-  margin-bottom: 1rem;
-}
-
-.experiencias-hero h1 {
-  font-size: 2.6rem;
-  font-weight: 700;
-  margin-bottom: .8rem;
-}
-
-.experiencias-hero p {
-  max-width: 620px;
-  margin: 0 auto;
-  opacity: .95;
-}
-
-/* Post destacado */
-.post-destacado {
+  position: relative;
+  min-height: 480px;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 0;
-  border-radius: 20px;
+  place-items: center;
+  color: #fff;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
-  background: #fff;
+  background-image: linear-gradient(90deg, rgba(13, 45, 33, .88), rgba(13, 45, 33, .45)), var(--experiencias-hero-image);
+  background-size: cover;
+  background-position: center;
 }
+.experiencias-hero .container { position: relative; z-index: 1; max-width: 850px; }
+.experiencias-hero .hero-badge, .eyebrow {
+  display: inline-flex; align-items: center; gap: 7px; border-radius: 30px;
+  padding: 8px 14px; font-size: .76rem; font-weight: 700; letter-spacing: .1em;
+}
+.experiencias-hero .hero-badge { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.24); }
+.experiencias-hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.02; margin: 20px 0 16px; }
+.experiencias-hero p { max-width: 650px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7; }
+.hero-experiencias-btn { display: inline-flex; align-items: center; gap: 9px; margin-top: 28px; padding: 12px 20px; border-radius: 10px; background: #fff; color: var(--verde-oscuro); font-weight: 700; }
+.hero-experiencias-btn:hover { color: #fff; background: var(--verde-principal); }
 
-.post-destacado img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-height: 320px;
-}
+.intro-experiencias { display: grid; grid-template-columns: 1.05fr 1fr; gap: 55px; align-items: center; margin: 80px 0 48px; }
+.eyebrow { padding: 0; color: var(--verde-oscuro); background: transparent; }
+.intro-copy h2 { max-width: 500px; margin: 10px 0 14px; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; color: var(--azul-oscuro); }
+.intro-copy p { max-width: 570px; color: var(--gris-texto); font-size: 1.03rem; line-height: 1.75; }
+.mini-experiencias { display: grid; gap: 12px; }
+.mini-experiencias div { display: grid; grid-template-columns: 45px 1fr; column-gap: 12px; align-items: center; padding: 16px 18px; background: #fff; border-left: 4px solid var(--verde-principal); border-radius: 0 14px 14px 0; box-shadow: 0 8px 22px rgba(20, 65, 45, .08); }
+.mini-experiencias i { grid-row: span 2; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--verde-claro); color: var(--verde-oscuro); font-size: 1.2rem; }
+.mini-experiencias strong { color: var(--azul-oscuro); }
+.mini-experiencias span { color: var(--gris-texto); font-size: .85rem; }
 
-.post-destacado-body {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+.experiencias-filtros { padding: 24px; margin-bottom: 50px; text-align: center; background: #fff; border-radius: 18px; box-shadow: 0 8px 24px rgba(20, 65, 45, .07); }
+.experiencias-filtros p { margin: 0 0 12px; color: var(--gris-texto); font-size: .9rem; }
+.seccion-label { display: flex; align-items: center; gap: 12px; margin: 34px 0 18px; color: var(--verde-oscuro); }
+.seccion-label::after { content: ""; height: 1px; flex: 1; background: #dce8df; }
+.seccion-label span { font-size: .8rem; font-weight: 800; color: var(--verde-principal); }
+.seccion-label p { margin: 0; font-size: .85rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 
-.post-destacado-body .badge-categoria {
-  align-self: flex-start;
-}
+.post-destacado { display: grid; grid-template-columns: 1.1fr 1fr; overflow: hidden; border-radius: 22px; background: #fff; box-shadow: 0 18px 42px rgba(20, 65, 45, .12); }
+.post-destacado img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; }
+.post-destacado-body { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 55px); }
+.post-destacado-body .badge-categoria { align-self: flex-start; }
+.post-destacado-body h2 { margin: 16px 0 12px; color: var(--azul-oscuro); font-size: clamp(1.7rem, 3vw, 2.45rem); font-weight: 800; line-height: 1.15; }
+.post-destacado-body p { color: var(--gris-texto); line-height: 1.7; }
 
-.post-destacado-body h2 {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--azul-oscuro);
-  margin: 14px 0 10px;
-}
+.blog-card { height: 100%; overflow: hidden; border: 1px solid #edf1ee; border-radius: 17px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.055); transition: transform .3s, box-shadow .3s; }
+.blog-card:hover { transform: translateY(-7px); box-shadow: 0 18px 32px rgba(20,65,45,.13); }
+.blog-card img { width: 100%; height: 220px; object-fit: cover; }
+.blog-card-body { padding: 24px; }
+.badge-categoria { padding: 6px 12px; border-radius: 20px; background: var(--verde-claro); color: var(--verde-oscuro); font-size: .75rem; font-weight: 700; }
+.blog-card-fecha { margin-left: 8px; color: var(--gris-texto); font-size: .78rem; }
+.blog-card h5 { margin: 15px 0 9px; color: var(--azul-oscuro); font-size: 1.2rem; font-weight: 800; line-height: 1.3; }
+.blog-card p { color: var(--gris-texto); font-size: .93rem; line-height: 1.65; }
+.leer-mas { color: var(--verde-oscuro); font-size: .9rem; font-weight: 800; }
+.leer-mas:hover { color: var(--verde-principal); }
+#modalPostContenido { white-space: pre-line; color: var(--gris-texto); line-height: 1.8; font-size: 1rem; }
+#modalPost .modal-body { padding: 1.5rem 2rem 2rem; }
 
 @media (max-width: 768px) {
-  .post-destacado { grid-template-columns: 1fr; }
+  .experiencias-hero { min-height: 440px; padding: 55px 0; }
+  .intro-experiencias, .post-destacado { grid-template-columns: 1fr; gap: 28px; }
+  .intro-experiencias { margin-top: 55px; }
+  .post-destacado img { min-height: 245px; }
 }
-
-/* Tarjetas de blog */
-.blog-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
-  height: 100%;
-  transition: .3s;
-}
-
-.blog-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, .12);
-}
-
-.blog-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.blog-card-body { padding: 22px; }
-
-.badge-categoria {
-  background: var(--verde-claro);
-  color: var(--verde-oscuro);
-  font-weight: 600;
-  font-size: .75rem;
-  padding: 5px 12px;
-  border-radius: 20px;
-}
-
-.blog-card-fecha {
-  color: var(--gris-texto);
-  font-size: .8rem;
-  margin-left: 8px;
-}
-
-.blog-card h5 {
-  font-weight: 700;
-  color: var(--azul-oscuro);
-  margin: 12px 0 8px;
-}
-
-.blog-card p {
-  color: var(--gris-texto);
-  font-size: .9rem;
-}
-
-.blog-card .leer-mas {
-  color: var(--verde-oscuro);
-  font-weight: 600;
-  font-size: .9rem;
-}
-
-.blog-card .leer-mas:hover { color: var(--verde-menta); }
-
-/* Lectura amplia de artículos en el modal, sin alterar la tarjeta resumida. */
-#modalPostContenido {
-  white-space: pre-line;
-  color: var(--gris-texto);
-  line-height: 1.8;
-  font-size: 1rem;
-}
-
-#modalPost .modal-body { padding: 1.5rem 2rem 2rem; }

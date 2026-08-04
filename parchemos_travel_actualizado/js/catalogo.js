@@ -14,12 +14,25 @@ const listaPublicaEl = document.getElementById("listaPublicaDestinos");
 const sinDestinosEl = document.getElementById("sinDestinos");
 const botonesCategoria = document.querySelectorAll("#filtrosCategoria .btn-filtro");
 const botonesGrupo = document.querySelectorAll(".btn-filtro-grupo");
+const formBuscarDestino = document.getElementById("formBuscarDestino");
+const inputBuscarDestino = document.getElementById("buscarDestino");
+const btnLimpiarBusqueda = document.getElementById("limpiarBusqueda");
+const estadoBusquedaEl = document.getElementById("estadoBusqueda");
 
 // ESTADO DE FILTROS
 const filtros = {
   categoria: "todos",
   tipoViaje: "todos",
+  busqueda: "",
 };
+
+function normalizarTexto(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("es-CO")
+    .trim();
+}
 // UTILIDADES
 function formatearPrecio(precio) {
   return new Intl.NumberFormat("es-CO", {
@@ -220,7 +233,17 @@ function aplicarFiltros(destinos) {
       filtros.categoria === "todos" || destino.categoria === filtros.categoria;
     const coincideTipo =
       filtros.tipoViaje === "todos" || destino.tipoViaje === filtros.tipoViaje;
-    return coincideCategoria && coincideTipo;
+    const textoDestino = [
+      destino.nombre,
+      destino.region,
+      destino.categoria,
+      destino.descripcion,
+      destino.tipoViaje,
+    ]
+      .map(normalizarTexto)
+      .join(" ");
+    const coincideBusqueda = !filtros.busqueda || textoDestino.includes(filtros.busqueda);
+    return coincideCategoria && coincideTipo && coincideBusqueda;
   });
 }
 
@@ -232,10 +255,19 @@ function renderizarCatalogo() {
 
   if (destinos.length === 0) {
     sinDestinosEl.classList.remove("d-none");
+    if (filtros.busqueda) {
+      sinDestinosEl.querySelector("p").textContent = `No encontramos destinos para “${inputBuscarDestino.value.trim()}”.`;
+    } else {
+      sinDestinosEl.querySelector("p").textContent = "No hay destinos disponibles con los filtros seleccionados.";
+    }
+    estadoBusquedaEl.textContent = "";
     return;
   }
 
   sinDestinosEl.classList.add("d-none");
+  estadoBusquedaEl.textContent = filtros.busqueda
+    ? `${destinos.length} ${destinos.length === 1 ? "destino encontrado" : "destinos encontrados"}`
+    : "";
 
   destinos.forEach((destino) => {
     listaPublicaEl.appendChild(crearCardPublica(destino));
@@ -264,6 +296,28 @@ botonesGrupo.forEach((btn) => {
     filtros.tipoViaje = btn.dataset.tipo;
     renderizarCatalogo();
   });
+});
+
+inputBuscarDestino.addEventListener("input", () => {
+  filtros.busqueda = normalizarTexto(inputBuscarDestino.value);
+  btnLimpiarBusqueda.classList.toggle("d-none", !inputBuscarDestino.value.trim());
+  renderizarCatalogo();
+});
+
+formBuscarDestino.addEventListener("submit", (event) => {
+  event.preventDefault();
+  document.querySelector("#listaPublicaDestinos .destino-card")?.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
+});
+
+btnLimpiarBusqueda.addEventListener("click", () => {
+  inputBuscarDestino.value = "";
+  filtros.busqueda = "";
+  btnLimpiarBusqueda.classList.add("d-none");
+  inputBuscarDestino.focus();
+  renderizarCatalogo();
 });
 
 // INICIALIZACIÓN

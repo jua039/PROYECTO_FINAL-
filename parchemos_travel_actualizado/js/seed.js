@@ -69,7 +69,7 @@ const DESTINOS_SEED = [
     categoria: "Naturaleza",
     tipoViaje: "Parche individual",
     cupos: 18,
-    imagen: "https://loremflickr.com/800/600/tatacoa,desert,colombia",
+    imagen: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/34/1c/b2/desierto-de-la-tatacoa.jpg?w=700&h=400&s=1",
   },
   {
     id: 7,
@@ -81,7 +81,7 @@ const DESTINOS_SEED = [
     categoria: "Cultural",
     tipoViaje: "A viajar en familia",
     cupos: 25,
-    imagen: "https://loremflickr.com/800/600/las-lajas,colombia,church",
+    imagen: "https://images.pexels.com/photos/13783816/pexels-photo-13783816.jpeg",
   },
   {
     id: 8,
@@ -93,7 +93,7 @@ const DESTINOS_SEED = [
     categoria: "Cultural",
     tipoViaje: "Parche individual",
     cupos: 40,
-    imagen: "https://loremflickr.com/800/600/salt-cathedral,zipaquira,colombia",
+    imagen: "https://images.pexels.com/photos/36209536/pexels-photo-36209536.jpeg",
   },
   {
     id: 9,
@@ -105,7 +105,7 @@ const DESTINOS_SEED = [
     categoria: "Playa",
     tipoViaje: "Parchemos con amigos",
     cupos: 12,
-    imagen: "https://loremflickr.com/800/600/san-andres,colombia,caribbean",
+    imagen: "https://images.pexels.com/photos/3417784/pexels-photo-3417784.jpeg",
   },
   {
     id: 10,
@@ -117,7 +117,7 @@ const DESTINOS_SEED = [
     categoria: "Montaña",
     tipoViaje: "Parchemos con amigos",
     cupos: 15,
-    imagen: "https://loremflickr.com/800/600/nevado-del-ruiz,colombia,mountain",
+    imagen: "https://images.pexels.com/photos/17370933/pexels-photo-17370933.jpeg",
   },
   {
     id: 11,
@@ -129,7 +129,7 @@ const DESTINOS_SEED = [
     categoria: "Cultural",
     tipoViaje: "Parche individual",
     cupos: 35,
-    imagen: "https://loremflickr.com/800/600/bogota,colombia,monserrate",
+    imagen: "https://images.pexels.com/photos/19676274/pexels-photo-19676274.jpeg",
   },
   {
     id: 12,
@@ -141,7 +141,7 @@ const DESTINOS_SEED = [
     categoria: "Cultural",
     tipoViaje: "Parchemos con amigos",
     cupos: 28,
-    imagen: "https://loremflickr.com/800/600/comuna-13,medellin,colombia",
+    imagen: "https://images.pexels.com/photos/37278658/pexels-photo-37278658.jpeg",
   },
   {
     id: 13,
@@ -153,7 +153,7 @@ const DESTINOS_SEED = [
     categoria: "Rural",
     tipoViaje: "A viajar en familia",
     cupos: 24,
-    imagen: "https://loremflickr.com/800/600/villa-de-leyva,colombia",
+    imagen: "https://images.pexels.com/photos/17413264/pexels-photo-17413264.jpeg",
   },
   {
     id: 14,
@@ -165,7 +165,7 @@ const DESTINOS_SEED = [
     categoria: "Rural",
     tipoViaje: "Parche individual",
     cupos: 20,
-    imagen: "https://loremflickr.com/800/600/barichara,colombia",
+    imagen: "https://images.pexels.com/photos/31649387/pexels-photo-31649387.jpeg",
   },
   {
     id: 15,
@@ -177,7 +177,7 @@ const DESTINOS_SEED = [
     categoria: "Cultural",
     tipoViaje: "A viajar en familia",
     cupos: 18,
-    imagen: "https://loremflickr.com/800/600/mompox,colombia",
+    imagen: "https://www.tomplanmytrip.com/wp-content/uploads/2024/06/Main-Square-Santa-Cruz-de-Mompox-East-Caribbean-Coast-1.jpg",
   },
   {
     id: 16,
@@ -189,7 +189,7 @@ const DESTINOS_SEED = [
     categoria: "Playa",
     tipoViaje: "Parchemos con amigos",
     cupos: 14,
-    imagen: "https://loremflickr.com/800/600/providencia,colombia,island",
+    imagen: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/1d/a3/c0/el-lugar-es-hermoso-100.jpg?w=1400&h=-1&s=1",
   },
   {
     id: 17,
@@ -201,7 +201,7 @@ const DESTINOS_SEED = [
     categoria: "Aventura",
     tipoViaje: "Parche individual",
     cupos: 16,
-    imagen: "https://loremflickr.com/800/600/guajira,colombia,desert",
+    imagen: "https://images.pexels.com/photos/13209625/pexels-photo-13209625.jpeg",
   },
   {
     id: 18,
@@ -213,7 +213,7 @@ const DESTINOS_SEED = [
     categoria: "Aventura",
     tipoViaje: "Parchemos con amigos",
     cupos: 12,
-    imagen: "https://loremflickr.com/800/600/ciudad-perdida,colombia,jungle",
+    imagen: "https://turcol.co/wp-content/uploads/2020/12/Lost-city-trek-2.png",
   },
   {
     id: 19,
@@ -225,7 +225,7 @@ const DESTINOS_SEED = [
     categoria: "Cultural",
     tipoViaje: "A viajar en familia",
     cupos: 26,
-    imagen: "https://loremflickr.com/800/600/popayan,colombia,colonial",
+    imagen: "https://images.pexels.com/photos/13200191/pexels-photo-13200191.jpeg",
   },
   {
     id: 20,
@@ -237,7 +237,7 @@ const DESTINOS_SEED = [
     categoria: "Naturaleza",
     tipoViaje: "Parche individual",
     cupos: 10,
-    imagen: "https://loremflickr.com/800/600/leticia,amazonas,colombia",
+    imagen: "https://images.pexels.com/photos/17025853/pexels-photo-17025853.jpeg",
   },
 ];
 

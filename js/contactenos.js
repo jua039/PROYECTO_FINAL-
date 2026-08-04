@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-/* ============================================================
-   contactenos.js — Formulario de contacto
-   Guarda el último mensaje en localStorage y confirma el envío
-   sin recargar la página.
-   ============================================================ */
-=======
 
->>>>>>> 5ea5dca (parte1)
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.getElementById("formContacto");
   const mensajeEl = document.getElementById("mensajeContacto");

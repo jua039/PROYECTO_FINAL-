@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-/* ===== Variables globales de marca (fuente única de verdad) ===== */
-:root {
-=======
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
     --fuente-principal: "Poppins", Arial, sans-serif;
->>>>>>> 5ea5dca (parte1)
     --beige: #F5F5DC;
     --verde: #8FBC8F;
     --verde-oscuro: #1E5B45;
@@ -25,12 +20,6 @@
 }
 
 body {
-<<<<<<< HEAD
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    color: #333;
-}
-
-=======
     font-family: var(--fuente-principal);
     color: #333;
 }
@@ -170,18 +159,13 @@ button, input, select, textarea {
     .toast-reserva { right: 16px; bottom: 84px; left: 16px; }
 }
 
->>>>>>> 5ea5dca (parte1)
 a {
     text-decoration: none;
 }
 
 .custom-navbar {
     background-color: var(--verde-oscuro) !important;
-<<<<<<< HEAD
-    /* Asegura el fondo oscuro */
-=======
     
->>>>>>> 5ea5dca (parte1)
     padding: 20px 0;
 }
 
@@ -198,20 +182,12 @@ a {
     color: var(--verde-claro) !important;
 }
 
-<<<<<<< HEAD
-/* Hamburguesa para móviles */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .custom-navbar .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-<<<<<<< HEAD
-/* Ícono de la hamburguesa en blanco */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .custom-navbar .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
@@ -220,11 +196,7 @@ a {
     box-shadow: none;
 }
 
-<<<<<<< HEAD
-/* Botones personalizados en Navbar */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .btn-login {
     border: 1px solid white !important;
     color: white !important;
@@ -333,11 +305,7 @@ a {
 
 }
 
-<<<<<<< HEAD
-/* Botón de engranaje — acceso rápido al panel de administrador */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .btn-admin-gear {
     display: inline-flex;
     align-items: center;
@@ -368,11 +336,7 @@ a {
     transform: rotate(90deg);
 }
 
-<<<<<<< HEAD
-/* ===== Footer global ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .site-footer {
     background-color: var(--verde-oscuro);
     color: rgba(255, 255, 255, .85);
@@ -444,11 +408,7 @@ a {
     margin: 30px 0 15px;
 }
 
-<<<<<<< HEAD
-/* ===== Botón de filtro genérico (usado en Destinos y Experiencias) ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .btn-filtro {
     border: 1px solid #dfe4e8;
     background: #fff;
@@ -471,11 +431,7 @@ a {
     color: #fff;
 }
 
-<<<<<<< HEAD
-/* ===== Responsive navbar ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 @media (max-width: 991px) {
     .custom-navbar .navbar-nav {
         margin: 15px 0;
@@ -486,11 +442,7 @@ a {
     }
 }
 
-<<<<<<< HEAD
-/* ===== Carrusel de destinos (Home) ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .destinos-carrusel-section {
     padding: 70px 0;
     background: #fff;
@@ -555,11 +507,7 @@ a {
     width: 5%;
 }
 
-<<<<<<< HEAD
-/* ===== Galería / Ideas de viaje (Home) ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .ideas-viaje-section {
     padding: 70px 0;
     background: var(--beige);
@@ -604,11 +552,7 @@ a {
     margin-bottom: 0;
 }
 
-<<<<<<< HEAD
-/* Carrusel de tarjetas y vista previa del blog en Inicio */
-=======
 
->>>>>>> 5ea5dca (parte1)
 #carruselDestinos { padding: 18px 38px 30px; }
 #carruselDestinos .carousel-indicators { bottom: -8px; }
 #carruselDestinos .carousel-indicators button { background-color: var(--verde-oscuro); }

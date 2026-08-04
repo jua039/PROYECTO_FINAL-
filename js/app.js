@@ -243,11 +243,6 @@ inputImagen.addEventListener("change", () => {
 
 
 document.addEventListener("DOMContentLoaded", renderizarDestinos);
-<<<<<<< HEAD
-
-// Refresca el listado si el catálogo o una segunda pestaña modifica los datos.
-=======
->>>>>>> 5ea5dca (parte1)
 window.addEventListener("storage", (event) => {
   if (event.key === STORAGE_KEY) renderizarDestinos();
 });

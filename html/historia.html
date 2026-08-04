@@ -13,22 +13,14 @@
 
 <body data-page="nosotros">
 
-<<<<<<< HEAD
-    <!-- Barra de progreso de lectura -->
-=======
     
->>>>>>> 5ea5dca (parte1)
     <div class="reading-progress"><span id="readingBar"></span></div>
 
     <div id="navbar-root"></div>
 
     <main class="historia-page">
 
-<<<<<<< HEAD
-        <!-- Encabezado, mismo lenguaje visual que la mancha organica de "Nosotros" -->
-=======
         
->>>>>>> 5ea5dca (parte1)
         <header class="historia-hero">
             <div class="historia-hero-visual">
                 <div class="historia-blob"><i class="bi bi-signpost-split"></i></div>
@@ -39,11 +31,7 @@
             <p class="historia-lead">Ocho momentos que explican por que Parchemos Travel existe.</p>
         </header>
 
-<<<<<<< HEAD
-        <!-- Linea de tiempo interactiva -->
-=======
         
->>>>>>> 5ea5dca (parte1)
         <div id="historia" class="historia-timeline">
 
             <article class="capitulo" data-icon="bi-emoji-frown">
@@ -78,11 +66,7 @@
                 </div>
             </article>
 
-<<<<<<< HEAD
-            <!-- Cita destacada -->
-=======
             
->>>>>>> 5ea5dca (parte1)
             <div class="capitulo-cita">
                 <i class="bi bi-quote"></i>
                 <p>Queríamos construir un espacio con auténtico sello colombiano, libre de publicidad invasiva y con un
@@ -134,11 +118,7 @@
 
         </div>
 
-<<<<<<< HEAD
-        <!-- Puente hacia Nosotros -->
-=======
         
->>>>>>> 5ea5dca (parte1)
         <section class="historia-cta">
             <div class="historia-cta-blob"><i class="bi bi-people-fill"></i></div>
             <div>
@@ -156,10 +136,6 @@
     <script src="../js/layout.js" data-base=".."></script>
 
     <script>
-<<<<<<< HEAD
-        // Revela cada capítulo al hacer scroll
-=======
->>>>>>> 5ea5dca (parte1)
         const capitulos = document.querySelectorAll('.capitulo, .capitulo-cita, .historia-cta');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -170,11 +146,6 @@
             });
         }, { threshold: 0.2 });
         capitulos.forEach(el => observer.observe(el));
-<<<<<<< HEAD
-
-        // Barra de progreso de lectura
-=======
->>>>>>> 5ea5dca (parte1)
         const barra = document.getElementById('readingBar');
         window.addEventListener('scroll', () => {
             const alto = document.documentElement.scrollHeight - window.innerHeight;

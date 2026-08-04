@@ -48,16 +48,8 @@ const monthButtons = document.querySelectorAll(".month-btn");
 
 monthButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-<<<<<<< HEAD
-    // Marcar el botón activo
     monthButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
-
-    // Redibujar el gráfico con los datos del mes elegido
-=======
-    monthButtons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
->>>>>>> 5ea5dca (parte1)
     const mes = btn.dataset.month;
     dibujarGrafico(mes);
   });
@@ -69,11 +61,6 @@ const cards = document.querySelectorAll(".card");
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     const section = card.dataset.section;
-<<<<<<< HEAD
-    // Acá podés navegar a otra página o mostrar otra sección.
-    // Por ahora solo lo mostramos en consola como ejemplo:
-=======
->>>>>>> 5ea5dca (parte1)
     console.log("Abrir sección:", section);
   });
 });

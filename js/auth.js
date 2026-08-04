@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-/* Autenticación para la versión estática de Parchemos Travel.
-   En una aplicación con servidor, las contraseñas y sesiones deben manejarse
-   en el backend; aquí se persisten únicamente en el navegador del usuario. */
-=======
 
->>>>>>> 5ea5dca (parte1)
 (function () {
   const USERS_KEY = "usuarios";
   const SESSION_KEY = "sesionActiva";
@@ -54,10 +48,6 @@
         const sesion = JSON.parse(almacenamiento.getItem(SESSION_KEY) || "null");
         if (sesion && sesion.correo) return sesion;
       } catch {
-<<<<<<< HEAD
-        // Un valor corrupto no debe impedir volver a iniciar sesión.
-=======
->>>>>>> 5ea5dca (parte1)
       }
     }
     return null;
@@ -97,10 +87,6 @@
     } else {
       usuario = obtenerUsuarios().find((candidato) =>
         normalizarCorreo(candidato.correo) === correoNormalizado &&
-<<<<<<< HEAD
-        // Compatibilidad con registros previos, que usaban la propiedad con ñ.
-=======
->>>>>>> 5ea5dca (parte1)
         (candidato.contrasena || candidato["contraseña"]) === contrasena
       );
     }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/* Variables de marca: ver css/styles.css (fuente única de verdad) */
-=======
 
->>>>>>> 5ea5dca (parte1)
 
 body {
   background-color: #f8f9fa;
@@ -62,11 +58,7 @@ body {
 
 }
 
-<<<<<<< HEAD
-/* ===== Búsqueda de destinos ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .buscador-destinos {
   position: relative;
   display: flex;
@@ -228,13 +220,7 @@ body {
   border-top: 1px solid #e9ecef;
   margin-top: 5rem;
 }
-<<<<<<< HEAD
-/*=========================
-    TARJETA DESTINO
-==========================*/
-=======
 
->>>>>>> 5ea5dca (parte1)
 
 .destino-card{
 
@@ -415,11 +401,7 @@ body {
   }
 }
 
-<<<<<<< HEAD
-/* ===== Filtros de Destinos ===== */
-=======
 
->>>>>>> 5ea5dca (parte1)
 .filtros-destinos {
   background: #fff;
   border-radius: 16px;

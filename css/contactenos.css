@@ -9,11 +9,7 @@
 
 .contacto-hero {
     min-height: 70vh;
-<<<<<<< HEAD
-    font-family: Arial, Helvetica, sans-serif;
-=======
     font-family: var(--fuente-principal, "Poppins", Arial, sans-serif);
->>>>>>> 5ea5dca (parte1)
     background-image: linear-gradient(rgba(33, 70, 105, .4), rgba(88, 183, 136, .3)), var(--contacto-hero-image);
     background-size: cover;
     background-position: center;

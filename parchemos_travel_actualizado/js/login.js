@@ -1,71 +1,43 @@
-const formulario = document.getElementById('iniciarSesion');
-const mensajeEstado = document.getElementById('mensajeEstado');
-
-// Credenciales exclusivas del administrador.
-// Solo con este correo y esta contraseña se habilita el engranaje del panel.
-const ADMIN_CORREO = "gerencia.parchemos@admin.co";
-const ADMIN_CLAVE = "Parchemos#2026";
+const formulario = document.getElementById("iniciarSesion");
+const mensajeEstado = document.getElementById("mensajeEstado");
 
 function mostrarMensaje(texto, tipo) {
-    mensajeEstado.textContent = texto;
-    mensajeEstado.className = `auth-toast is-visible ${tipo}`;
+  mensajeEstado.textContent = texto;
+  mensajeEstado.className = `auth-toast is-visible ${tipo}`;
 }
 
-function manejarRespuestaGoogle(respuesta) {
-    const datosUsuario = JSON.parse(atob(respuesta.credential.split('.')[1]));
-    console.log("Usuario verificado", datosUsuario);
-
-    const usuario = {
-        correo: datosUsuario.email,
-        nombre: datosUsuario.name,
-        foto: datosUsuario.picture,
-        metodo: "google",
-    };
-
-    // El login con Google nunca otorga el rol de administrador.
-    localStorage.removeItem('rolAdmin');
-    localStorage.setItem('formulario', JSON.stringify(usuario));
-    mostrarMensaje(`¡Bienvenido, ${datosUsuario.name}!`, 'success');
+function marcarError(input, mostrar) {
+  input.classList.toggle("is-invalid", mostrar);
+  const error = input.parentElement.querySelector(".form-text-error");
+  if (error) error.classList.toggle("is-visible", mostrar);
 }
 
-formulario.addEventListener('submit', function (evento) {
-    evento.preventDefault();
+formulario.addEventListener("submit", (evento) => {
+  evento.preventDefault();
 
-    const email = document.getElementById('floatingInput').value.trim();
-    const contraseña = document.getElementById('floatingPassword').value;
-    const recordar = document.getElementById('guardarInfo').checked;
+  const correo = document.getElementById("floatingInput");
+  const contrasena = document.getElementById("floatingPassword");
+  const recordar = document.getElementById("guardarInfo").checked;
+  const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value.trim());
+  const contrasenaValida = contrasena.value.length > 0;
 
-    // 1. ¿Coincide con las credenciales del administrador?
-    if (email.toLowerCase() === ADMIN_CORREO.toLowerCase() && contraseña === ADMIN_CLAVE) {
-        localStorage.setItem('rolAdmin', 'true');
+  marcarError(correo, !correoValido);
+  marcarError(contrasena, !contrasenaValida);
+  if (!correoValido || !contrasenaValida) {
+    mostrarMensaje("Completa el correo y la contraseña para continuar.", "error");
+    return;
+  }
 
-        if (recordar) {
-            localStorage.setItem('formulario', JSON.stringify({ correo: email, checked: recordar }));
-        }
+  const resultado = window.Auth.iniciarSesion(correo.value, contrasena.value, recordar);
+  if (!resultado.ok) {
+    mostrarMensaje(resultado.mensaje, "error");
+    return;
+  }
 
-        mostrarMensaje('¡Bienvenido, administrador! Redirigiendo...', 'success');
-        setTimeout(() => { window.location.href = '../index.html'; }, 1200);
-        return;
-    }
+  mostrarMensaje(`¡Bienvenido, ${resultado.sesion.nombres}! Redirigiendo al dashboard...`, "success");
+  setTimeout(() => { window.location.href = "dashboard.html"; }, 700);
+});
 
-    // 2. ¿Es un usuario normal ya registrado? (nunca activa el rol de administrador)
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const usuarioValido = usuarios.find(
-        (u) => u.correo.toLowerCase() === email.toLowerCase() && u.contraseña === contraseña
-    );
-
-    if (usuarioValido) {
-        localStorage.removeItem('rolAdmin');
-
-        if (recordar) {
-            localStorage.setItem('formulario', JSON.stringify({ correo: email, checked: recordar }));
-        }
-
-        mostrarMensaje(`¡Bienvenido, ${usuarioValido.nombres}!`, 'success');
-        setTimeout(() => { window.location.href = '../index.html'; }, 1200);
-        return;
-    }
-
-    // 3. Nada coincide
-    mostrarMensaje('Usuario o contraseña incorrecta.', 'error');
+formulario.querySelectorAll(".form-control").forEach((input) => {
+  input.addEventListener("input", () => marcarError(input, false));
 });

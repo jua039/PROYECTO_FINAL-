@@ -1,84 +1,60 @@
-const formularioRegistro = document.getElementById('formularioRegistro');
-const mensajeEstado = document.getElementById('mensajeEstado');
+const formularioRegistro = document.getElementById("formularioRegistro");
+const mensajeEstado = document.getElementById("mensajeEstado");
 
 function marcarError(input, mostrar) {
-    input.classList.toggle('is-invalid', mostrar);
-    const error = input.closest('.col-12, .col-md-6, .col-md-4, .form-check')
-        ?.querySelector('.form-text-error');
-    if (error) error.classList.toggle('is-visible', mostrar);
+  input.classList.toggle("is-invalid", mostrar);
+  const error = input.closest(".col-12, .col-md-6, .form-check")?.querySelector(".form-text-error");
+  if (error) error.classList.toggle("is-visible", mostrar);
 }
 
 function mostrarMensaje(texto, tipo) {
-    mensajeEstado.textContent = texto;
-    mensajeEstado.className = `auth-toast is-visible ${tipo}`;
+  mensajeEstado.textContent = texto;
+  mensajeEstado.className = `auth-toast is-visible ${tipo}`;
 }
 
-formularioRegistro.addEventListener('submit', function (evento) {
-    evento.preventDefault();
+formularioRegistro.addEventListener("submit", (evento) => {
+  evento.preventDefault();
 
-    const nombres = document.getElementById('nombres');
-    const apellidos = document.getElementById('apellidos');
-    const correo = document.getElementById('correo');
-    const contraseña = document.getElementById('contraseña');
-    const confirmarContraseña = document.getElementById('confirmarContraseña');
-    const aceptaTerminos = document.getElementById('aceptaTerminos');
+  const nombres = document.getElementById("nombres");
+  const apellidos = document.getElementById("apellidos");
+  const correo = document.getElementById("correo");
+  const contrasena = document.getElementById("contraseña");
+  const confirmarContrasena = document.getElementById("confirmarContraseña");
+  const aceptaTerminos = document.getElementById("aceptaTerminos");
+  const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value.trim());
+  const contrasenaValida = contrasena.value.length >= 6;
+  const coinciden = contrasena.value === confirmarContrasena.value && confirmarContrasena.value !== "";
 
-    let esValido = true;
+  marcarError(nombres, nombres.value.trim() === "");
+  marcarError(apellidos, apellidos.value.trim() === "");
+  marcarError(correo, !correoValido);
+  marcarError(contrasena, !contrasenaValida);
+  marcarError(confirmarContrasena, !coinciden);
+  marcarError(aceptaTerminos, !aceptaTerminos.checked);
 
-    marcarError(nombres, nombres.value.trim() === '');
-    if (nombres.value.trim() === '') esValido = false;
+  if (nombres.value.trim() === "" || apellidos.value.trim() === "" || !correoValido || !contrasenaValida || !coinciden || !aceptaTerminos.checked) {
+    mostrarMensaje("Revisa los campos marcados antes de continuar.", "error");
+    return;
+  }
 
-    marcarError(apellidos, apellidos.value.trim() === '');
-    if (apellidos.value.trim() === '') esValido = false;
+  const resultado = window.Auth.registrar({
+    nombres: nombres.value,
+    apellidos: apellidos.value,
+    correo: correo.value,
+    contrasena: contrasena.value,
+  });
+  if (!resultado.ok) {
+    marcarError(correo, true);
+    mostrarMensaje(resultado.mensaje, "error");
+    return;
+  }
 
-    const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value.trim());
-    marcarError(correo, !correoValido);
-    if (!correoValido) esValido = false;
-
-    const contraseñaValida = contraseña.value.length >= 6;
-    marcarError(contraseña, !contraseñaValida);
-    if (!contraseñaValida) esValido = false;
-
-    const coinciden = confirmarContraseña.value === contraseña.value && confirmarContraseña.value !== '';
-    marcarError(confirmarContraseña, !coinciden);
-    if (!coinciden) esValido = false;
-
-    // Términos y condiciones
-    marcarError(aceptaTerminos, !aceptaTerminos.checked);
-    if (!aceptaTerminos.checked) esValido = false;
-
-    if (!esValido) {
-        mostrarMensaje('Revisa todos los campos antes de continuar.', 'error');
-        return;
-    }
-
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const yaExiste = usuarios.some(u => u.correo.toLowerCase() === correo.value.trim().toLowerCase());
-
-    if (yaExiste) {
-        marcarError(correo, true);
-        mostrarMensaje('Ya existe una cuenta registrada con ese correo.', 'error');
-        return;
-    }
-
-    const nuevoUsuario = {
-        nombres: nombres.value.trim(),
-        apellidos: apellidos.value.trim(),
-        correo: correo.value.trim(),
-        contraseña: contraseña.value,
-    };
-
-    usuarios.push(nuevoUsuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-    mostrarMensaje('¡Cuenta creada con éxito! Redirigiendo al inicio de sesión...', 'success');
-    formularioRegistro.reset();
-
-    setTimeout(() => {
-        window.location.href = 'login.html';
-    }, 1500);
+  mostrarMensaje("¡Cuenta creada con éxito! Ahora puedes iniciar sesión.", "success");
+  formularioRegistro.reset();
+  setTimeout(() => { window.location.href = "login.html"; }, 900);
 });
 
-formularioRegistro.querySelectorAll('.form-control, #aceptaTerminos').forEach(input => {
-    input.addEventListener('input', () => marcarError(input, false));
+formularioRegistro.querySelectorAll(".form-control, #aceptaTerminos").forEach((input) => {
+  input.addEventListener("input", () => marcarError(input, false));
+  input.addEventListener("change", () => marcarError(input, false));
 });

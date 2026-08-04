@@ -39,14 +39,14 @@
           </ul>
           <div class="d-flex gap-2 align-items-center">
             <a href="${html}/login.html" class="btn btn-login">Iniciar sesión</a>
-            <a href="${html}/login.html" class="btn btn-register">Registrarse</a>
+            <a href="${html}/registro.html" class="btn btn-register">Registrarse</a>
             <a href="${html}/carrito.html" class="btn btn-carrito position-relative">
               <i class="bi bi-cart3"></i>
               Reservas
               <span id="contadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
             </a>
             ${esAdmin
-              ? `<a href="${html}/dasboard.html" class="btn-admin-gear" title="Panel de administrador">
+              ? `<a href="${html}/dashboard.html" class="btn-admin-gear" title="Panel de administrador">
               <i class="bi bi-gear-fill"></i>
             </a>`
               : ""

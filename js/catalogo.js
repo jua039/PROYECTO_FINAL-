@@ -36,9 +36,27 @@ function formatearPrecio(precio) {
     maximumFractionDigits: 0,
   }).format(precio);
 }
-function obtenerDestinos() {
+function obtenerDestinosLocal() {
   const data = localStorage.getItem(STORAGE_KEY);
   return data ? JSON.parse(data) : [];
+}
+
+let destinosCache = [];
+
+async function cargarDestinos() {
+  try {
+    const pagina = await window.API.getPaquetesDetalle(0, 50);
+    destinosCache = pagina.content || [];
+    return destinosCache;
+  } catch (error) {
+    console.warn("No se pudo conectar con la API, usando datos locales:", error.message);
+    destinosCache = obtenerDestinosLocal();
+    return destinosCache;
+  }
+}
+
+function obtenerDestinos() {
+  return destinosCache.length ? destinosCache : obtenerDestinosLocal();
 }
 function obtenerCarrito() {
   const carrito = localStorage.getItem("carrito");
@@ -300,7 +318,8 @@ btnLimpiarBusqueda.addEventListener("click", () => {
   inputBuscarDestino.focus();
   renderizarCatalogo();
 });
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await cargarDestinos();
   renderizarCatalogo();
 });
 window.addEventListener("storage", (event) => {

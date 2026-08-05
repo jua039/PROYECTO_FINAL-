@@ -437,3 +437,34 @@ body {
   border-color: var(--verde-menta);
   color: var(--verde-oscuro);
 }
+
+.modal-reserva-content {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal-reserva-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(46, 106, 80, 0.12);
+  color: var(--verde-oscuro);
+  font-size: 1.6rem;
+}
+
+.modal-reserva-email {
+  background: #f4f8f6;
+  border-left: 4px solid var(--verde-menta);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.modal-reserva-email strong {
+  color: var(--azul-navy);
+}

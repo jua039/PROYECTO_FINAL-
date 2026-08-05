@@ -1,5 +1,6 @@
 const formularioRegistro = document.getElementById("formularioRegistro");
 const mensajeEstado = document.getElementById("mensajeEstado");
+const btnSubmit = formularioRegistro?.querySelector('button[type="submit"]');
 
 function marcarError(input, mostrar) {
   input.classList.toggle("is-invalid", mostrar);
@@ -12,7 +13,7 @@ function mostrarMensaje(texto, tipo) {
   mensajeEstado.className = `auth-toast is-visible ${tipo}`;
 }
 
-formularioRegistro.addEventListener("submit", (evento) => {
+formularioRegistro.addEventListener("submit", async (evento) => {
   evento.preventDefault();
 
   const nombres = document.getElementById("nombres");
@@ -37,21 +38,26 @@ formularioRegistro.addEventListener("submit", (evento) => {
     return;
   }
 
-  const resultado = window.Auth.registrar({
+  if (btnSubmit) btnSubmit.disabled = true;
+  const resultado = await window.Auth.registrar({
     nombres: nombres.value,
     apellidos: apellidos.value,
     correo: correo.value,
     contrasena: contrasena.value,
   });
+  if (btnSubmit) btnSubmit.disabled = false;
+
   if (!resultado.ok) {
     marcarError(correo, true);
     mostrarMensaje(resultado.mensaje, "error");
     return;
   }
 
-  mostrarMensaje("¡Cuenta creada con éxito! Ahora puedes iniciar sesión.", "success");
+  mostrarMensaje("¡Cuenta creada con éxito! Inicia sesión para reservar tus destinos.", "success");
   formularioRegistro.reset();
-  setTimeout(() => { window.location.href = "login.html"; }, 900);
+  setTimeout(() => {
+    window.location.href = "login.html";
+  }, 900);
 });
 
 formularioRegistro.querySelectorAll(".form-control, #aceptaTerminos").forEach((input) => {

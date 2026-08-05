@@ -1,114 +1,161 @@
-const STORAGE_KEY = "destinos";
-
-
 const form = document.getElementById("formDestino");
 const listaDestinosEl = document.getElementById("listaDestinos");
 const emptyStateEl = document.getElementById("emptyState");
 const contadorEl = document.getElementById("contador");
 const alertaExitoEl = document.getElementById("alertaExito");
+const alertaErrorEl = document.getElementById("alertaError");
 const btnLimpiarTodo = document.getElementById("btnLimpiarTodo");
-const inputImagen = document.getElementById("imagen");
+const inputImagenUrl = document.getElementById("imagenUrl");
 const imagenPreview = document.getElementById("imagenPreview");
 const btnSubmit = form.querySelector('button[type="submit"]');
+
+let paquetesCache = [];
 let idEditando = null;
+let destinoIdEditando = null;
 
-
-inputImagen.addEventListener("change", function (e) {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function (ev) {
-    const img = new Image();
-    img.onload = function () {
-      const MAX_ANCHO = 800;
-      const escala = Math.min(1, MAX_ANCHO / img.width);
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width * escala;
-      canvas.height = img.height * escala;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const imagenComprimida = canvas.toDataURL("image/jpeg", 0.7);
-      imagenPreview.src = imagenComprimida;
-      imagenPreview.classList.remove("d-none");
-    };
-    img.src = ev.target.result;
+function parseRegion(region) {
+  const partes = String(region || "").split(",").map((parte) => parte.trim()).filter(Boolean);
+  return {
+    ciudad: partes[0] || region || "Colombia",
+    pais: partes[1] || "Colombia",
   };
-  reader.readAsDataURL(file);
+}
+
+function parseDuracionDias(duracion) {
+  const coincidencia = String(duracion || "").match(/\d+/);
+  return coincidencia ? Number(coincidencia[0]) : 1;
+}
+
+function actualizarPreviewImagen(url) {
+  if (!url) {
+    imagenPreview.src = "";
+    imagenPreview.classList.add("d-none");
+    return;
+  }
+  imagenPreview.src = url;
+  imagenPreview.classList.remove("d-none");
+}
+
+inputImagenUrl?.addEventListener("input", () => {
+  actualizarPreviewImagen(inputImagenUrl.value.trim());
 });
 
-
-function obtenerDestinos() {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
+async function cargarPaquetes() {
+  const pagina = await window.API.getPaquetesDetalle(0, 50);
+  paquetesCache = pagina.content || [];
+  renderizarDestinos();
 }
 
-function guardarDestinos(destinos) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(destinos));
-  console.log("=== LISTA DE DESTINOS ACTUALIZADA (JSON) ===");
-  console.log(JSON.stringify(destinos, null, 2));
-}
+function obtenerDatosFormulario() {
+  const region = document.getElementById("region").value.trim();
+  const { ciudad, pais } = parseRegion(region);
+  const duracion = document.getElementById("duracion").value.trim();
 
-
-function agregarDestino(e) {
-  e.preventDefault();
-
-  if (!form.checkValidity()) {
-    e.stopPropagation();
-    form.classList.add("was-validated");
-    return;
-  }
-
-  const imagenSrc = imagenPreview.src;
-  if (!imagenSrc || imagenSrc === window.location.href) {
-    inputImagen.setCustomValidity("Debes seleccionar una imagen.");
-    form.classList.add("was-validated");
-    return;
-  }
-  inputImagen.setCustomValidity("");
-
-  const destinos = obtenerDestinos();
-
-  const datosFormulario = {
+  return {
     nombre: document.getElementById("nombre").value.trim(),
-    region: document.getElementById("region").value.trim(),
+    region,
+    ciudad,
+    pais,
     descripcion: document.getElementById("descripcion").value.trim(),
     precio: Number(document.getElementById("precio").value),
-    duracion: document.getElementById("duracion").value.trim(),
+    duracion,
+    duracionDias: parseDuracionDias(duracion),
     categoria: document.getElementById("categoria").value,
     cupos: Number(document.getElementById("cupos").value),
     tipoViaje: document.getElementById("tipoViaje").value,
-    imagen: imagenSrc,
+    imagenUrl: inputImagenUrl.value.trim(),
   };
+}
 
-  if (idEditando !== null) {
-    const index = destinos.findIndex((d) => d.id === idEditando);
-    if (index !== -1) destinos[index] = { id: idEditando, ...datosFormulario };
-  } else {
-    const nuevoId = destinos.length > 0 ? Math.max(...destinos.map((d) => d.id)) + 1 : 1;
-    destinos.push({ id: nuevoId, ...datosFormulario });
+async function guardarDestino(evento) {
+  evento.preventDefault();
+
+  if (!form.checkValidity()) {
+    evento.stopPropagation();
+    form.classList.add("was-validated");
+    return;
   }
 
-  guardarDestinos(destinos);
-  renderizarDestinos();
-  mostrarAlertaExito();
-  resetFormulario();
+  const datos = obtenerDatosFormulario();
+  if (!datos.imagenUrl) {
+    inputImagenUrl.setCustomValidity("Ingresa la URL de la imagen.");
+    form.classList.add("was-validated");
+    return;
+  }
+  inputImagenUrl.setCustomValidity("");
+
+  btnSubmit.disabled = true;
+  ocultarAlertaError();
+
+  try {
+    if (idEditando !== null) {
+      await window.API.actualizarDestino(destinoIdEditando, {
+        destinoId: destinoIdEditando,
+        nombre: datos.nombre,
+        ciudad: datos.ciudad,
+        pais: datos.pais,
+        descripcion: datos.descripcion,
+      });
+
+      await window.API.actualizarPaquete(idEditando, {
+        paqueteId: idEditando,
+        destinoId: destinoIdEditando,
+        nombre: datos.nombre,
+        descripcion: datos.descripcion,
+        precio: datos.precio,
+        duracionDias: datos.duracionDias,
+        duracionTexto: datos.duracion,
+        cupoMaximo: datos.cupos,
+        imagenUrl: datos.imagenUrl,
+        categoria: datos.categoria,
+        tipoViaje: datos.tipoViaje,
+        servicios: "Hotel,Transporte,Alimentación",
+      });
+    } else {
+      const destino = await window.API.crearDestino({
+        nombre: datos.nombre,
+        ciudad: datos.ciudad,
+        pais: datos.pais,
+        descripcion: datos.descripcion,
+      });
+
+      await window.API.crearPaquete({
+        destinoId: destino.destinoId,
+        nombre: datos.nombre,
+        descripcion: datos.descripcion,
+        precio: datos.precio,
+        duracionDias: datos.duracionDias,
+        duracionTexto: datos.duracion,
+        cupoMaximo: datos.cupos,
+        imagenUrl: datos.imagenUrl,
+        categoria: datos.categoria,
+        tipoViaje: datos.tipoViaje,
+        servicios: "Hotel,Transporte,Alimentación",
+      });
+    }
+
+    await cargarPaquetes();
+    mostrarAlertaExito();
+    resetFormulario();
+  } catch (error) {
+    mostrarAlertaError(error.message || "No se pudo guardar el destino.");
+  } finally {
+    btnSubmit.disabled = false;
+  }
 }
 
 function resetFormulario() {
   form.reset();
   form.classList.remove("was-validated");
-  imagenPreview.src = "";
-  imagenPreview.classList.add("d-none");
-  inputImagen.setCustomValidity("");
-  inputImagen.required = true;
+  actualizarPreviewImagen("");
+  inputImagenUrl.setCustomValidity("");
   idEditando = null;
+  destinoIdEditando = null;
   btnSubmit.innerHTML = '<i class="bi bi-check-circle"></i> Agregar destino';
 }
 
 function editarDestino(id) {
-  const destinos = obtenerDestinos();
-  const destino = destinos.find((d) => d.id === id);
+  const destino = paquetesCache.find((item) => item.paqueteId === id);
   if (!destino) return;
 
   document.getElementById("nombre").value = destino.nombre;
@@ -119,33 +166,53 @@ function editarDestino(id) {
   document.getElementById("categoria").value = destino.categoria;
   document.getElementById("cupos").value = destino.cupos;
   document.getElementById("tipoViaje").value = destino.tipoViaje || "";
+  inputImagenUrl.value = destino.imagen?.startsWith("http") ? destino.imagen : "";
+  actualizarPreviewImagen(inputImagenUrl.value || destino.imagen);
 
-  imagenPreview.src = destino.imagen;
-  imagenPreview.classList.remove("d-none");
-  inputImagen.required = false;
-  inputImagen.setCustomValidity("");
-
-  idEditando = id;
+  idEditando = destino.paqueteId;
+  destinoIdEditando = destino.destinoId;
   btnSubmit.innerHTML = '<i class="bi bi-check-circle"></i> Guardar cambios';
   form.classList.remove("was-validated");
   form.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function eliminarDestino(id) {
-  let destinos = obtenerDestinos();
-  destinos = destinos.filter((d) => d.id !== id);
-  guardarDestinos(destinos);
-  renderizarDestinos();
-}
+async function eliminarDestino(id) {
+  const paquete = paquetesCache.find((item) => item.paqueteId === id);
+  if (!paquete) return;
 
-function vaciarLista() {
-  const confirmar = confirm("¿Seguro que deseas eliminar TODOS los destinos?");
-  if (confirmar) {
-    guardarDestinos([]);
-    renderizarDestinos();
+  if (!confirm(`¿Eliminar el paquete "${paquete.nombre}"?`)) return;
+
+  try {
+    await window.API.eliminarPaquete(id);
+    if (paquete.destinoId) {
+      await window.API.eliminarDestino(paquete.destinoId).catch(() => {});
+    }
+    if (idEditando === id) resetFormulario();
+    await cargarPaquetes();
+    mostrarAlertaExito("Destino eliminado correctamente.");
+  } catch (error) {
+    mostrarAlertaError(error.message || "No se pudo eliminar el destino.");
   }
 }
 
+async function vaciarLista() {
+  if (!paquetesCache.length) return;
+  if (!confirm("¿Seguro que deseas eliminar TODOS los destinos publicados?")) return;
+
+  try {
+    for (const paquete of paquetesCache) {
+      await window.API.eliminarPaquete(paquete.paqueteId);
+      if (paquete.destinoId) {
+        await window.API.eliminarDestino(paquete.destinoId).catch(() => {});
+      }
+    }
+    resetFormulario();
+    await cargarPaquetes();
+    mostrarAlertaExito("Todos los destinos fueron eliminados.");
+  } catch (error) {
+    mostrarAlertaError(error.message || "No se pudo vaciar la lista.");
+  }
+}
 
 function formatearPrecio(precio) {
   return new Intl.NumberFormat("es-CO", {
@@ -155,7 +222,6 @@ function formatearPrecio(precio) {
   }).format(precio);
 }
 
-
 function crearCardDestino(destino) {
   const col = document.createElement("div");
   col.className = "col-12 col-sm-6";
@@ -163,10 +229,10 @@ function crearCardDestino(destino) {
   col.innerHTML = `
     <div class="card destino-card">
       <div class="destino-img-wrapper">
-        <button class="btn btn-sm btn-light btn-editar" data-id="${destino.id}" title="Editar destino">
+        <button class="btn btn-sm btn-light btn-editar" data-id="${destino.paqueteId}" title="Editar destino">
           <i class="bi bi-pencil-fill text-primary"></i>
         </button>
-        <button class="btn btn-sm btn-light btn-eliminar" data-id="${destino.id}" title="Eliminar destino">
+        <button class="btn btn-sm btn-light btn-eliminar" data-id="${destino.paqueteId}" title="Eliminar destino">
           <i class="bi bi-trash3-fill text-danger"></i>
         </button>
         <img
@@ -194,55 +260,57 @@ function crearCardDestino(destino) {
   `;
 
   col.querySelector(".btn-eliminar").addEventListener("click", () => {
-    eliminarDestino(destino.id);
+    eliminarDestino(destino.paqueteId);
   });
 
   col.querySelector(".btn-editar").addEventListener("click", () => {
-    editarDestino(destino.id);
+    editarDestino(destino.paqueteId);
   });
 
   return col;
 }
 
-
 function renderizarDestinos() {
-  const destinos = obtenerDestinos();
   listaDestinosEl.innerHTML = "";
-  contadorEl.textContent = destinos.length;
+  contadorEl.textContent = paquetesCache.length;
 
-  if (destinos.length === 0) {
+  if (!paquetesCache.length) {
     emptyStateEl.classList.remove("d-none");
     return;
   }
 
   emptyStateEl.classList.add("d-none");
-  destinos.forEach((destino) => {
+  paquetesCache.forEach((destino) => {
     listaDestinosEl.appendChild(crearCardDestino(destino));
   });
 }
 
-function mostrarAlertaExito() {
+function mostrarAlertaExito(mensaje = "¡Destino guardado correctamente!") {
+  alertaExitoEl.innerHTML = `<i class="bi bi-check-circle-fill"></i> ${mensaje}`;
   alertaExitoEl.classList.remove("d-none");
   setTimeout(() => alertaExitoEl.classList.add("d-none"), 2500);
 }
 
+function mostrarAlertaError(mensaje) {
+  if (!alertaErrorEl) return;
+  alertaErrorEl.textContent = mensaje;
+  alertaErrorEl.classList.remove("d-none");
+}
 
-form.addEventListener("submit", agregarDestino);
+function ocultarAlertaError() {
+  if (!alertaErrorEl) return;
+  alertaErrorEl.classList.add("d-none");
+  alertaErrorEl.textContent = "";
+}
 
-
-
+form.addEventListener("submit", guardarDestino);
 btnLimpiarTodo.addEventListener("click", vaciarLista);
+document.getElementById("btnLimpiar").addEventListener("click", resetFormulario);
 
-document.getElementById("btnLimpiar").addEventListener("click", () => {
-  resetFormulario();
-});
-
-inputImagen.addEventListener("change", () => {
-  inputImagen.setCustomValidity("");
-});
-
-
-document.addEventListener("DOMContentLoaded", renderizarDestinos);
-window.addEventListener("storage", (event) => {
-  if (event.key === STORAGE_KEY) renderizarDestinos();
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await cargarPaquetes();
+  } catch (error) {
+    mostrarAlertaError(error.message || "No se pudo cargar el listado desde la API.");
+  }
 });

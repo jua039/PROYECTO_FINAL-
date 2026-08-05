@@ -9,6 +9,7 @@ const carritoVacio = document.getElementById("carritoVacio");
 const alertaCarrito = document.getElementById("alertaCarrito");
 const btnVaciarCarrito = document.getElementById("btnVaciarCarrito");
 const btnConfirmarVaciar = document.getElementById("confirmarVaciar");
+const btnConfirmarReserva = document.getElementById("btnConfirmarReserva");
 function obtenerCarrito() {
   const datos = localStorage.getItem(STORAGE_CARRITO);
 
@@ -253,4 +254,44 @@ function confirmarVaciarCarrito() {
 }
 
 btnVaciarCarrito.addEventListener("click", vaciarCarrito);
-btnConfirmarVaciar.addEventListener( "click", confirmarVaciarCarrito);
+btnConfirmarVaciar.addEventListener("click", confirmarVaciarCarrito);
+
+btnConfirmarReserva?.addEventListener("click", async () => {
+  const sesion = window.Auth?.obtenerSesion();
+  const carrito = obtenerCarrito();
+
+  if (!carrito.length) {
+    mostrarAlerta("Agrega al menos un destino antes de confirmar.", "warning");
+    return;
+  }
+
+  if (!sesion?.usuarioId) {
+    sessionStorage.setItem("postLoginRedirect", "carrito.html");
+    mostrarAlerta("Debes iniciar sesión para confirmar tu reserva.", "warning");
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1200);
+    return;
+  }
+
+  btnConfirmarReserva.disabled = true;
+  try {
+    for (const item of carrito) {
+      await window.API.crearReserva({
+        usuarioId: sesion.usuarioId,
+        paqueteId: item.paqueteId || item.id,
+        numPersonas: item.cantidad,
+      });
+    }
+    guardarCarrito([]);
+    renderizarCarrito();
+    window.mostrarModalReservaEmail?.({
+      esConfirmacion: true,
+      titulo: "¡Reserva confirmada!",
+    });
+  } catch (error) {
+    mostrarAlerta(error.message || "No se pudo confirmar la reserva.", "danger");
+  } finally {
+    btnConfirmarReserva.disabled = false;
+  }
+});

@@ -1,38 +1,21 @@
-
 (function () {
-  const USERS_KEY = "usuarios";
   const SESSION_KEY = "sesionActiva";
-  const ADMIN = {
-    nombres: "Gerencia",
-    apellidos: "Parchemos Travel",
-    correo: "gerencia.parchemos@admin.co",
-    contrasena: "Parchemos#2026",
-    rol: "admin",
-  };
 
   function normalizarCorreo(correo) {
     return String(correo || "").trim().toLowerCase();
   }
 
-  function obtenerUsuarios() {
-    try {
-      const usuarios = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-      return Array.isArray(usuarios) ? usuarios : [];
-    } catch {
-      return [];
-    }
-  }
-
-  function guardarUsuarios(usuarios) {
-    localStorage.setItem(USERS_KEY, JSON.stringify(usuarios));
+  function mapearRol(rolApi) {
+    return rolApi === "ADMIN" ? "admin" : "cliente";
   }
 
   function crearSesion(usuario, recordar) {
     const sesion = {
+      usuarioId: usuario.usuarioId ?? null,
       nombres: usuario.nombres,
       apellidos: usuario.apellidos,
       correo: usuario.correo,
-      rol: usuario.rol || "usuario",
+      rol: usuario.rol || "cliente",
     };
     const almacenamiento = recordar ? localStorage : sessionStorage;
     sessionStorage.removeItem(SESSION_KEY);
@@ -53,47 +36,69 @@
     return null;
   }
 
+  function esAdmin() {
+    return obtenerSesion()?.rol === "admin";
+  }
+
+  function esCliente() {
+    const sesion = obtenerSesion();
+    return sesion && sesion.rol === "cliente";
+  }
+
+  function obtenerRutaPostLogin(sesion, baseHtml = ".") {
+    if (sesion?.rol === "admin") {
+      return baseHtml === ".." ? "dashboard.html" : "html/dashboard.html";
+    }
+    return baseHtml === ".." ? "catalogo.html" : "html/catalogo.html";
+  }
+
   function cerrarSesion() {
     localStorage.removeItem(SESSION_KEY);
     sessionStorage.removeItem(SESSION_KEY);
     localStorage.removeItem("rolAdmin");
   }
 
-  function registrar(datos) {
-    const correo = normalizarCorreo(datos.correo);
-    const usuarios = obtenerUsuarios();
-    if (correo === ADMIN.correo || usuarios.some((usuario) => normalizarCorreo(usuario.correo) === correo)) {
-      return { ok: false, mensaje: "Ya existe una cuenta registrada con ese correo." };
+  async function registrar(datos) {
+    try {
+      await window.API.register({
+        nombre: datos.nombres.trim(),
+        apellido: datos.apellidos.trim(),
+        email: normalizarCorreo(datos.correo),
+        password: datos.contrasena,
+      });
+      return { ok: true };
+    } catch (error) {
+      return { ok: false, mensaje: error.message || "No se pudo completar el registro." };
     }
-
-    const usuario = {
-      nombres: datos.nombres.trim(),
-      apellidos: datos.apellidos.trim(),
-      correo,
-      contrasena: datos.contrasena,
-      rol: "usuario",
-    };
-    usuarios.push(usuario);
-    guardarUsuarios(usuarios);
-    return { ok: true, usuario };
   }
 
-  function iniciarSesion(correo, contrasena, recordar) {
-    const correoNormalizado = normalizarCorreo(correo);
-    let usuario = null;
-
-    if (correoNormalizado === ADMIN.correo && contrasena === ADMIN.contrasena) {
-      usuario = ADMIN;
-    } else {
-      usuario = obtenerUsuarios().find((candidato) =>
-        normalizarCorreo(candidato.correo) === correoNormalizado &&
-        (candidato.contrasena || candidato["contraseña"]) === contrasena
+  async function iniciarSesion(correo, contrasena, recordar) {
+    try {
+      const respuesta = await window.API.login(normalizarCorreo(correo), contrasena);
+      const sesion = crearSesion(
+        {
+          usuarioId: respuesta.usuarioId,
+          nombres: respuesta.nombre,
+          apellidos: respuesta.apellido,
+          correo: respuesta.email,
+          rol: mapearRol(respuesta.rol),
+        },
+        recordar,
       );
+      return { ok: true, sesion };
+    } catch (error) {
+      return { ok: false, mensaje: error.message || "Correo o contraseña incorrectos." };
     }
-
-    if (!usuario) return { ok: false, mensaje: "Correo o contraseña incorrectos." };
-    return { ok: true, sesion: crearSesion(usuario, recordar) };
   }
 
-  window.Auth = { cerrarSesion, iniciarSesion, obtenerSesion, registrar };
+  window.Auth = {
+    cerrarSesion,
+    esAdmin,
+    esCliente,
+    iniciarSesion,
+    mapearRol,
+    obtenerRutaPostLogin,
+    obtenerSesion,
+    registrar,
+  };
 })();

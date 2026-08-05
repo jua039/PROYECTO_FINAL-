@@ -3,11 +3,23 @@
   const CATALOGO_URL = "html/catalogo.html";
   const DESTINOS_POR_SLIDE = 3;
 
-  function obtenerDestinos() {
+  function obtenerDestinosLocal() {
     try {
       return JSON.parse(localStorage.getItem("destinos") || "[]");
     } catch {
       return [];
+    }
+  }
+
+  async function obtenerDestinos() {
+    if (!window.API?.getPaquetesDetalle) {
+      return obtenerDestinosLocal();
+    }
+    try {
+      const pagina = await window.API.getPaquetesDetalle(0, 6);
+      return pagina.content?.length ? pagina.content : obtenerDestinosLocal();
+    } catch {
+      return obtenerDestinosLocal();
     }
   }
 
@@ -38,12 +50,12 @@
     );
   }
 
-  function renderizarCarrusel() {
+  function renderizarCarrusel(destinos) {
     const contenedor = document.getElementById("carruselDestinosInner");
     const indicadores = document.getElementById("carruselDestinosIndicadores");
     if (!contenedor || !indicadores) return;
 
-    const grupos = dividirEnGrupos(obtenerDestinos(), DESTINOS_POR_SLIDE);
+    const grupos = dividirEnGrupos(destinos, DESTINOS_POR_SLIDE);
     if (!grupos.length) {
       contenedor.innerHTML = '<div class="carousel-item active"><p class="text-center py-5">Muy pronto nuevos destinos.</p></div>';
       indicadores.innerHTML = "";
@@ -60,5 +72,8 @@
         aria-label="Diapositiva ${indice + 1}"></button>`).join("");
   }
 
-  document.addEventListener("DOMContentLoaded", renderizarCarrusel);
+  document.addEventListener("DOMContentLoaded", async () => {
+    const destinos = await obtenerDestinos();
+    renderizarCarrusel(destinos);
+  });
 })();

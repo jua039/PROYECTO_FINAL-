@@ -220,11 +220,17 @@ a {
 
 .custom-navbar .navbar-brand {
     color: white !important;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 1.25rem;
 }
 
 .navbar-logo {
-    height: 42px;
+    height: 48px;
     width: auto;
+    flex-shrink: 0;
     object-fit: contain;
 }
 

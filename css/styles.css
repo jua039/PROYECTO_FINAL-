@@ -258,6 +258,35 @@ a {
 }
 
 
+.navbar-user-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    color: var(--verde-oscuro) !important;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 8px 16px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-user-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-user-pill i {
+    color: var(--verde-menta);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
 .btn-login {
     border: 1px solid white !important;
     color: white !important;

@@ -59,7 +59,7 @@
   };
 
   const navAuthHTML = sesion
-    ? `<span class="navbar-user-name d-none d-md-inline">${escaparHTML(sesion.nombres)}</span>
+    ? `<span class="navbar-user-pill d-none d-md-inline-flex" title="${escaparHTML(sesion.nombres)}"><i class="bi bi-person-circle"></i>${escaparHTML(sesion.nombres)}</span>
        <button type="button" class="btn btn-login btn-sm" id="btnCerrarSesionNav">Salir</button>`
     : `<a href="${html}/login.html" class="btn btn-login">Iniciar sesión</a>
        <a href="${html}/registro.html" class="btn btn-register">Registrarse</a>`;

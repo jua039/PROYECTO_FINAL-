@@ -219,19 +219,41 @@ a {
 }
 
 .custom-navbar .navbar-brand {
-    color: white !important;
-    display: flex;
+    color: var(--verde-oscuro) !important;
+    display: inline-flex;
     align-items: center;
+    gap: 10px;
     flex-shrink: 0;
     white-space: nowrap;
-    font-size: 1.25rem;
+    font-size: 1.05rem;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    color: var(--verde-oscuro) !important;
 }
 
 .navbar-logo {
-    height: 48px;
+    height: 36px;
     width: auto;
     flex-shrink: 0;
     object-fit: contain;
+}
+
+.logo-pill .brand-text {
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    display: inline-block;
+    line-height: 1;
+}
+
+.logo-pill .brand-sub {
+    display: inline-block;
+    margin-left: 6px;
+    font-weight: 600;
+    color: var(--naranja);
+    font-size: .8rem;
+    vertical-align: baseline;
 }
 
 .custom-navbar .nav-link {

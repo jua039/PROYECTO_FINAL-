@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Diseño Sugerencias */
 
 :root{
@@ -134,3 +135,48 @@ body{
         0 12px 25px rgba(88,183,136,.45);
 }
 
+=======
+:root {
+    --beige: #F5F5DC;
+    --verde: #8FBC8F;
+}
+
+/* Layout principal */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--beige);
+    padding: 20px;
+}
+
+/* 1. Tarjeta "Quiénes somos" (Sin marco, centrada) */
+.intro-card {
+    border: none !important;
+    background: transparent !important;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* 2. Acordeón (Ocupa todo el ancho disponible) */
+.accordion {
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 40px 0;
+}
+
+/* 3. Tarjetas participantes (Una al lado de otra, con verde) */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.participant-card {
+    border: 2px solid var(--verde) !important;
+    background-color: var(--beige) !important;
+    width: 18rem;
+}
+>>>>>>> origin/main
